@@ -21,6 +21,7 @@ public class Data {
 
             System.out.print("connected");
 
+            //Gets values from the robot and puts it into a map
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 if (line.contains("THROTTLE")) {
