@@ -8,20 +8,25 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Data {
-<<<<<<< HEAD
     public static String getData() {
         String returner = "";
         try (Socket s = new Socket("RoboRIO-2473-FRC.local", 2005)) {
             InputStream in = s.getInputStream();
             Scanner scan = new Scanner(in);
 
-                System.out.print("connected");
+            System.out.print("connected");
 
-                while (scan.hasNextLine()) {
-                    System.out.println(scan.nextLine()); //Testing
-                    returner += scan.nextLine();
-                }
-=======
+            while (scan.hasNextLine()) {
+                System.out.println(scan.nextLine()); //Testing
+                returner += scan.nextLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        return returner;
+    }
+
     public static void data() {
         Map<String, Double> values = new HashMap<>(4);
         values.put("THROTTLE", null);
@@ -32,7 +37,6 @@ public class Data {
         try (Socket s = new Socket("RoboRIO-2473-FRC.local", 2005);
              InputStream in = s.getInputStream();
              Scanner scan = new Scanner(in)) {
->>>>>>> 95de1ec8d73f6af53e88a334caa7632738534080
 
             System.out.print("connected");
 
@@ -49,12 +53,8 @@ public class Data {
                     values.put("RIGHT_ENCODER", Double.parseDouble(line.substring(line.lastIndexOf(":") + 1)));
                 }
             }
-<<<<<<< HEAD
-            return returner;
-=======
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
->>>>>>> 95de1ec8d73f6af53e88a334caa7632738534080
     }
 }
