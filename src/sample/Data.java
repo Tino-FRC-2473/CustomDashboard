@@ -8,27 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Data {
-    public static String getData() {
-        String returner = "";
-        try (Socket s = new Socket("RoboRIO-2473-FRC.local", 2005)) {
-            InputStream in = s.getInputStream();
-            Scanner scan = new Scanner(in);
-
-            System.out.print("connected");
-
-            while (scan.hasNextLine()) {
-                System.out.println(scan.nextLine()); //Testing
-                returner += scan.nextLine();
-            }
-
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-        return returner;
-    }
-
-    public static void data() {
-        Map<String, Double> values = new HashMap<>(4);
+    private Map<String, Double> values = new HashMap<>(4);
+    public void refresh() {
         values.put("THROTTLE", null);
         values.put("GYRO", null);
         values.put("LEFT_ENCODER", null);
@@ -56,5 +37,25 @@ public class Data {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public Map getAllData() {
+        return values;
+    }
+
+    public Double getThrottle() {
+        return values.get("THROTTLE");
+    }
+
+    public Double getGyro() {
+        return values.get("GYRO");
+    }
+
+    public Double getLeftEncoder() {
+        return values.get("LEFT_ENC");
+    }
+
+    public Double getRightEncoder() {
+        return values.get("RIGHT_ENC");
     }
 }

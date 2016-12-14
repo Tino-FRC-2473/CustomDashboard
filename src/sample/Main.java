@@ -64,6 +64,7 @@ public class Main extends Application {
             yOffset = event.getSceneY();
             text.setText("Press");
         });
+
         pane.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
