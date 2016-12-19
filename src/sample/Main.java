@@ -30,6 +30,7 @@ public class Main extends Application {
     public void start(Stage primaryStage)throws Exception{
         /*Root and window*/
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
         /*Parent layout*/

@@ -1,15 +1,17 @@
 package sample;
 
+import javafx.collections.FXCollections;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class Data {
-    private Map<String, Double> values = new HashMap<>(4);
-    public void refresh() {
+    private static Map<String, Double> values = FXCollections.observableHashMap();
+
+    public static void refresh() {
         values.put("THROTTLE", null);
         values.put("GYRO", null);
         values.put("LEFT_ENCODER", null);
@@ -37,25 +39,5 @@ public class Data {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public Map getAllData() {
-        return values;
-    }
-
-    public Double getThrottle() {
-        return values.get("THROTTLE");
-    }
-
-    public Double getGyro() {
-        return values.get("GYRO");
-    }
-
-    public Double getLeftEncoder() {
-        return values.get("LEFT_ENC");
-    }
-
-    public Double getRightEncoder() {
-        return values.get("RIGHT_ENC");
     }
 }
