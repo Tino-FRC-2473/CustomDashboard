@@ -1,9 +1,11 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -15,8 +17,8 @@ import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
-    private double xOffset = 0;
-    private  double yOffset = 0;
+    private static double xOffset = 0;
+    private static double yOffset = 0;
 
     @Override
     public void start(Stage primaryStage)throws Exception{
@@ -25,49 +27,37 @@ public class Main extends Application {
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        /*Parent layout*/
-        Pane pane = new VBox();
+        GridPane background_pane = new GridPane();
+        background_pane.setOnMouseDragged(e -> {
+            primaryStage.setX(e.getScreenX() - xOffset);
+            primaryStage.setY(e.getScreenY() - yOffset);
+            System.out.println("dragging");
+        });
 
-        /*Main Screen Scene*/
-        Scene main = new Scene(pane, 800, 600, Color.BLACK);
-
-        /*Top green bar*/
-        Rectangle top_bar = new Rectangle();
-        top_bar.setFill(Color.web("rgba(29,255,42,1.0)"));
-        top_bar.setHeight(24);
-        top_bar.setWidth(main.getWidth());
-        top_bar.setLayoutX(0);
-        top_bar.setLayoutY(0);
-        pane.getChildren().addAll(top_bar);
-
-        //Text testing stuff
-        Text text = new Text(6400, 512, "TESTING");
-        text.setFont(new Font(40));
-        text.setFill(new Color(1.0, 1.0, 1.0, 1.0));
-//        text.textProperty().bind(StringBinding.stringExpression());
-        pane.getChildren().add(text);
-
-        primaryStage.setScene(main);
-        primaryStage.setTitle("FRC " + Constants.TEAM_NUMBER + " Dashboard");
+        Scene scene = new Scene(root, 536, 400);
+        primaryStage.setScene(scene);
         primaryStage.show();
-
-
-        pane.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-            text.setText("Press");
-        });
-
-        pane.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY() - yOffset);
-            text.setText("Drag");
-        });
     }
 
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public static double getxOffset() {
+        return xOffset;
+    }
+
+    public static void setxOffset(double offset) {
+        xOffset = offset;
+    }
+
+    public static double getyOffset() {
+        return yOffset;
+    }
+
+    public static void setyOffset(double offset) {
+        yOffset = offset;
     }
 }
 
@@ -76,6 +66,3 @@ public class Main extends Application {
 Penzov, Peter. “How to Drag Undecorated Window.” Javafx 2 - How to Drag Undecorated Window - Stack Overflow,
     StackExchange, 11 Aug. 2013, stackoverflow.com/questions/18173956/how-to-drag-undecorated-window.
  */
-
-
-
