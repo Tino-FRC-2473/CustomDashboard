@@ -1,25 +1,17 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.beans.binding.StringBinding;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 
 public class Main extends Application {
 
@@ -29,7 +21,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage)throws Exception{
         /*Root and window*/
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
