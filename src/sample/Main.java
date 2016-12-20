@@ -27,16 +27,15 @@ public class Main extends Application {
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
 
-        GridPane background_pane = new GridPane();
-        background_pane.setOnMouseDragged(e -> {
-            primaryStage.setX(e.getScreenX() - xOffset);
-            primaryStage.setY(e.getScreenY() - yOffset);
-            System.out.println("dragging");
-        });
-
         Scene scene = new Scene(root, 536, 400);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        root.setOnMouseDragged(event -> {
+            primaryStage.setX(event.getScreenX() - xOffset);
+            primaryStage.setY(event.getScreenY() - yOffset);
+            System.out.println("dragging");
+        });
     }
 
 
