@@ -2,15 +2,19 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="805.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="536.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,22 +30,221 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Pane maxHeight="45.0" prefHeight="21.0" prefWidth="805.0" style="-fx-background-color: #1DFF2A;" GridPane.columnSpan="5" GridPane.halignment="CENTER">
+      <Pane maxHeight="45.0" prefHeight="21.0" prefWidth="669.0" style="-fx-background-color: #1DFF2A;" GridPane.columnSpan="5" GridPane.halignment="CENTER">
          <GridPane.margin>
             <Insets bottom="25.0" />
          </GridPane.margin>
          <children>
-            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="777.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
-            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="758.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
-            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="738.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="517.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="497.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
+            <Rectangle arcHeight="5.0" fill="#ff5421" height="13.0" layoutX="477.0" layoutY="6.0" stroke="BLACK" strokeType="INSIDE" width="13.0" />
          </children>
       </Pane>
-      <Pane prefHeight="190.0" prefWidth="296.0" style="-fx-background-color: black;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
+      <Pane prefHeight="190.0" prefWidth="669.0" style="-fx-background-color: black;" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" GridPane.rowSpan="2147483647">
          <children>
-            <Label layoutX="44.0" layoutY="32.0" prefWidth="57.0" text="Gyro" textFill="#1dff2a">
+            <Label alignment="CENTER_RIGHT" layoutX="45.0" layoutY="67.0" prefWidth="57.0" text="Gyro" textFill="#1dff2a">
                <font>
                   <Font name="Menlo Regular" size="13.0" />
                </font></Label>
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="44.0" layoutX="132.0" layoutY="133.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="113.0" />
+            <Label alignment="CENTER_RIGHT" layoutX="45.0" layoutY="145.0" prefWidth="57.0" text="Battery" textFill="#1dff2a">
+               <font>
+                  <Font name="Menlo Regular" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="90.0" fitWidth="120.0" layoutX="133.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Downloads/Untitled%202.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="28.0" layoutX="244.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
+            <VBox layoutX="276.0" layoutY="31.0" prefHeight="119.0" prefWidth="239.0">
+               <children>
+                  <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="171.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="87.0" text="Pickup:" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #323232;" text="Spin Intake" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="171.0">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="87.0" text="Shooter:" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #323232;" text="Release" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="171.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="87.0" text="Drivetrain:" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #323232;" text="Drive" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="334.0" layoutY="134.0" prefHeight="203.0" prefWidth="176.0" style="-fx-background-color: #323232;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="239.0" style="-fx-background-color: #323232;" text="Sensors" textFill="#1dff2a">
+                     <font>
+                        <Font name="Menlo Regular" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <HBox prefHeight="40.0" prefWidth="176.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="Solenoid" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="Deployed" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="176.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="Color" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="285.38" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="171.0" layoutY="206.0" prefHeight="132.0" prefWidth="151.0" style="-fx-background-color: #323232;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="28.0" prefWidth="239.0" style="-fx-background-color: #323232;" text="Other Motors" textFill="#1dff2a">
+                     <font>
+                        <Font name="Menlo Regular" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <HBox prefHeight="40.0" prefWidth="176.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="Intake" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="504" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="40.0" prefWidth="176.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="Shooter" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="58.0" prefWidth="87.0" text="4003" textFill="#1dff2a">
+                           <font>
+                              <Font name="Menlo Regular" size="13.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" fill="#323232" height="132.0" layoutX="30.0" layoutY="207.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="123.0" />
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="41.0" layoutX="30.0" layoutY="207.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="41.0" layoutX="30.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="41.0" layoutX="136.0" layoutY="207.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
+            <Rectangle arcHeight="5.0" fill="#1dff2a" height="41.0" layoutX="136.0" layoutY="298.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="17.0" />
+            <Label alignment="CENTER" layoutX="65.0" layoutY="216.0" prefWidth="57.0" text="Chassis" textFill="#1dff2a">
+               <font>
+                  <Font name="Menlo Regular" size="11.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Text fill="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #1DFF2A;" text="Driver Station v0.1" textAlignment="CENTER" wrappingWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
