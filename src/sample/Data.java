@@ -40,4 +40,8 @@ public class Data {
             System.out.println(e.getMessage());
         }
     }
+
+    public static Map<String, Double> getValues() {
+        return values;
+    }
 }
