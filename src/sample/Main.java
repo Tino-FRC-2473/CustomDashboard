@@ -34,7 +34,6 @@ public class Main extends Application {
         root.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
-            System.out.println("dragging");
         });
     }
 
