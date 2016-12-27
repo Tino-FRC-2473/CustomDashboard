@@ -6,17 +6,9 @@ import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -30,8 +22,9 @@ public class Main extends Application {
     private static double xOffset = 0;
     private static double yOffset = 0;
     NetworkingThread networkingThread;
+
     @Override
-    public void start(Stage primaryStage)throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Map<String, String> map = new HashMap<>();
 
         networkingThread = new NetworkingThread(2005, map);

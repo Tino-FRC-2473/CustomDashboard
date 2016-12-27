@@ -58,7 +58,7 @@
                     </image>
                 </ImageView>
                 <Rectangle arcHeight="5.0" fill="#1dff2a" height="28.0" layoutX="244.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
-                <VBox layoutX="276.0" layoutY="31.0" prefHeight="119.0" prefWidth="239.0">
+                <VBox fx:id="table_2" layoutX="276.0" layoutY="31.0" prefHeight="119.0" prefWidth="239.0">
                     <children>
                         <HBox alignment="TOP_CENTER" prefHeight="34.0" prefWidth="171.0">
                             <children>
