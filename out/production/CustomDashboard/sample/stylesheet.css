@@ -1,0 +1,16 @@
+.subsystem_row {
+    -fx-alignment: TOP_CENTER;
+    -fx-pref-height: 34;
+    -fx-pref-width: 171;
+
+}
+.subsystem_label {
+    -fx-padding-top: 5.0;
+    -fx-padding-bottom: 5.0;
+    -fx-alignment: CENTER_RIGHT;
+    -fx-text-fill: #1dff2a;
+    -fx-font-family: Menlo;
+    -fx-font-size: 13;
+    -fx-pref-height: 26;
+    -fx-pref-width: 87;
+}
