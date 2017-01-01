@@ -28,7 +28,7 @@ public class Main extends Application {
         Map<String, String> map = new HashMap<>();
 
         networkingThread = new NetworkingThread(2005, map);
-        networkingThread.start();
+//        networkingThread.start();
         /*Root and window*/
         Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
 
@@ -47,12 +47,11 @@ public class Main extends Application {
         });
 
         Timeline time = new Timeline(new KeyFrame(new Duration(100), e -> {
-                control.update();
-            }
+            control.update();
+        }
         ));
         time.setCycleCount(Timeline.INDEFINITE);
         time.play();
-//        control.addSystem("Memes");
     }
 
     @Override
@@ -61,7 +60,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-//        launch(args);
+        launch(args);
     }
 
     public static double getxOffset() {

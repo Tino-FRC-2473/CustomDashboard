@@ -54,7 +54,7 @@
                 </Label>
                 <ImageView fitHeight="90.0" fitWidth="120.0" layoutX="133.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../img/Untitled%202.png" />
+                        <Image url="@../../img/gyro.png" />
                     </image>
                 </ImageView>
                 <Rectangle arcHeight="5.0" fill="#1dff2a" height="28.0" layoutX="244.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
