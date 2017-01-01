@@ -17,7 +17,6 @@ import java.util.Map;
 public class Controller {
     Scene scene;
     Map<String, String> map;
-    Color battery_color;
     final Color RED;
     final Color GREEN;
 
@@ -28,7 +27,6 @@ public class Controller {
     public Controller(Scene r, Map map) {
         scene = r;
         this.map = map;
-        battery_color = (Color)((Rectangle)(scene.lookup("#battery_small"))).getFill();
         RED = Color.web("#FF0000");
         GREEN = Color.web("#1DFF2A");
         percentage_test = 1.00;
@@ -49,7 +47,7 @@ public class Controller {
     }
 
     public void rotate(double deg) {
-        ImageView gyro = (ImageView)(scene.lookup("#gryo"));
+        ImageView gyro = (ImageView)(scene.lookup("#gyro"));
         gyro.setRotate(deg);
     }
 
@@ -78,6 +76,8 @@ public class Controller {
         } else {
             percentage_test -= 0.001;
         }
+        System.out.println(gyro_direction);
+        System.out.println(percentage_test);
     }
 
     public void update() {

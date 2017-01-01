@@ -50,6 +50,7 @@ public class Main extends Application {
             control.update();
         }
         ));
+
         time.setCycleCount(Timeline.INDEFINITE);
         time.play();
     }
