@@ -37,7 +37,9 @@ public class Main extends Application {
         Scene scene = new Scene(root, 536, 400);
         scene.getStylesheets().add("stylesheet.css");
         Controller control = new Controller(scene, map);
-
+        control.addSensorData("gyro1","Gyro","36°");
+        control.addSensorData("light1","Solenoid","485");
+        control.addMotorData("Arm2","Arm 4","34");
         primaryStage.setScene(scene);
         primaryStage.show();
 

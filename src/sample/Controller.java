@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Controller {
@@ -24,7 +25,12 @@ public class Controller {
     double percentage_test;
     double gyro_direction;
 
+    ArrayList<String> sensors;
+    ArrayList<String> motors;
+
     public Controller(Scene r, Map map) {
+        sensors = new ArrayList<String>();
+        motors = new ArrayList<String>();
         scene = r;
         this.map = map;
         RED = Color.web("#FF0000");
@@ -78,6 +84,30 @@ public class Controller {
         }
         System.out.println(gyro_direction);
         System.out.println(percentage_test);
+    }
+
+    public void addSensorData(String id, String name, String val) {
+        VBox box = (VBox)(scene.lookup("#sensors_list"));
+        sensors.add(id);
+        DeviceListRow item = new DeviceListRow(id, name, val);
+        box.getChildren().add(item);
+    }
+
+    public void updateSensorData(String id, String name, String val) {
+        DeviceListRow sensor = (DeviceListRow)(scene.lookup(id));
+        sensor.update(name, val);
+    }
+
+    public void addMotorData(String id, String name, String val) {
+        VBox box = (VBox)(scene.lookup("#motors_list"));
+        motors.add(id);
+        DeviceListRow item = new DeviceListRow(id, name, val);
+        box.getChildren().add(item);
+    }
+
+    public void updateMotorData(String id, String name, String val) {
+        DeviceListRow motor = (DeviceListRow)(scene.lookup(id));
+        motor.update(name, val);
     }
 
     public void update() {
