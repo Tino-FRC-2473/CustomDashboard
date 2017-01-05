@@ -27,10 +27,12 @@ public class Controller {
 
     ArrayList<String> sensors;
     ArrayList<String> motors;
+    ArrayList<String> subsystems;
 
     public Controller(Scene r, Map map) {
         sensors = new ArrayList<String>();
         motors = new ArrayList<String>();
+        subsystems = new ArrayList<String>();
         scene = r;
         this.map = map;
         RED = Color.web("#FF0000");
@@ -93,6 +95,8 @@ public class Controller {
         box.getChildren().add(item);
     }
 
+
+
     public void updateSensorData(String id, String name, String val) {
         DeviceListRow sensor = (DeviceListRow)(scene.lookup(id));
         sensor.update(name, val);
@@ -108,6 +112,18 @@ public class Controller {
     public void updateMotorData(String id, String name, String val) {
         DeviceListRow motor = (DeviceListRow)(scene.lookup(id));
         motor.update(name, val);
+    }
+
+    public void addSubsystem(String id, String subsystem, String command) {
+        VBox box = (VBox)(scene.lookup("#table_2"));
+        subsystems.add(id);
+        StatusRow system = new StatusRow(id, subsystem, command);
+        box.getChildren().add(system);
+    }
+
+    public void updateSystemCommand(String id, String command) {
+        StatusRow system = (StatusRow)(scene.lookup(id));
+        system.updateCommand(command);
     }
 
     public void update() {
