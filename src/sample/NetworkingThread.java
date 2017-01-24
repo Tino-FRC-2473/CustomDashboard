@@ -5,8 +5,7 @@ import javafx.collections.ObservableMap;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -27,6 +26,26 @@ public class NetworkingThread extends Thread {
         running = false;
     }
 
+    public Extract getStart(String line) {
+        boolean bool = false;
+        String string = "";
+        if(line.indexOf("START:") != -1) {
+            bool = true;
+            string = line.substring(8);
+        }
+        return new Extract(bool, string);
+    }
+
+    public Extract getEnd(String line) {
+        boolean bool = false;
+        String string = "";
+        if(line.indexOf("END:") != -1) {
+            bool = true;
+            string = line.substring(5);
+        }
+        return new Extract(bool, string);
+    }
+
     @Override
     public void run() {
         try (Socket s = new Socket("RoboRIO-2473-FRC.local", port_number);
@@ -34,21 +53,34 @@ public class NetworkingThread extends Thread {
              Scanner scan = new Scanner(in)) {
 
             System.out.print("connected");
+            String mode = "";
 
             //Gets values from the robot and puts it into a map
             while (scan.hasNextLine() && running) {
                 synchronized (map) {
                     String line = scan.nextLine();
-                    System.out.println(line);
-                    if (line.contains("THROTTLE")) {
-                        map.put("THROTTLE", (line.substring(line.lastIndexOf(":") + 1)));
-                    } else if (line.contains("GYRO")) {
-                        map.put("GYRO", (line.substring(line.lastIndexOf(":") + 1)));
-                    } else if (line.contains("LEFT_ENC")) {
-                        map.put("LEFT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
-                    } else if (line.contains("RIGHT_ENC")) {
-                        map.put("RIGHT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
+                    Extract start = getStart(line);
+                    Extract end = getEnd(line);
+
+                    if(start.getBool()) {
+                        mode = start.getString();
+                    } else if(end.getBool()) {
+                        mode = "";
+                    } else {
+                        String[] data = line.split(":");
+                        map.put((mode + "-" + data[0]), data[1]);
                     }
+
+//                    System.out.println(line);
+//                    if (line.contains("THROTTLE")) {
+//                        map.put("THROTTLE", (line.substring(line.lastIndexOf(":") + 1)));
+//                    } else if (line.contains("GYRO")) {
+//                        map.put("GYRO", (line.substring(line.lastIndexOf(":") + 1)));
+//                    } else if (line.contains("LEFT_ENC")) {
+//                        map.put("LEFT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
+//                    } else if (line.contains("RIGHT_ENC")) {
+//                        map.put("RIGHT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
+//                    }
                 }
                 try {
                     Thread.sleep(10);

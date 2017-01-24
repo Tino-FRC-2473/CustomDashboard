@@ -77,6 +77,10 @@ public class Controller {
         return Color.hsb(hue,1.0,1.0);
     }
 
+    public double getPercent(double voltage) {
+        return voltage/12.0;
+    }
+
     public void changeValues() {
         gyro_direction++;
         if(percentage_test == 0) {
@@ -130,8 +134,26 @@ public class Controller {
         changeValues();
         rotate(gyro_direction);
         updateColor(chooseColor(percentage_test));
-//        synchronized (map) {
-//            System.out.println(map.values());
-//        }
+        synchronized (map) {
+            for(Map.Entry<String, String> i : map.entrySet()) {
+                String key = i.getKey();
+                String value = i.getValue();
+                if(key.indexOf("SENSORS") != -1) {
+                    String id = key.substring(key.indexOf("-") + 1);
+                    updateSensorData(id,id,value);
+                } else if(key.indexOf("BATTERY") != -1) {
+                    String id = key.substring(key.indexOf("-") + 1);
+                    updateColor(chooseColor(getPercent(Double.parseDouble(value))));
+                } else if(key.indexOf("MOTORS") != -1) {
+                    String id = key.substring(key.indexOf("-") + 1);
+                    updateMotorData(id,id,value);
+                } else if(key.indexOf("COMMANDS") != -1) {
+                    String id = key.substring(key.indexOf("-") + 1);
+                    if(value != null) {
+                        updateSystemCommand(id,id);
+                    }
+                }
+            }
+        }
     }
 }
