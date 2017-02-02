@@ -70,17 +70,6 @@ public class NetworkingThread extends Thread {
                         String[] data = line.split(":");
                         map.put((mode + "-" + data[0]), data[1]);
                     }
-
-//                    System.out.println(line);
-//                    if (line.contains("THROTTLE")) {
-//                        map.put("THROTTLE", (line.substring(line.lastIndexOf(":") + 1)));
-//                    } else if (line.contains("GYRO")) {
-//                        map.put("GYRO", (line.substring(line.lastIndexOf(":") + 1)));
-//                    } else if (line.contains("LEFT_ENC")) {
-//                        map.put("LEFT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
-//                    } else if (line.contains("RIGHT_ENC")) {
-//                        map.put("RIGHT_ENCODER", (line.substring(line.lastIndexOf(":") + 1)));
-//                    }
                 }
                 try {
                     Thread.sleep(10);

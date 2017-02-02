@@ -93,41 +93,70 @@ public class Controller {
     }
 
     public void addSensorData(String id, String name, String val) {
-        VBox box = (VBox)(scene.lookup("#sensors_list"));
-        sensors.add(id);
-        DeviceListRow item = new DeviceListRow(id, name, val);
-        box.getChildren().add(item);
+        if(sensors.indexOf(id) != -1) {
+            updateSensorData(id,name,val);
+        } else {
+            VBox box = (VBox)(scene.lookup("#sensors_list"));
+            sensors.add(id);
+            DeviceListRow item = new DeviceListRow(id, name, val);
+            box.getChildren().add(item);
+        }
     }
 
-
-
     public void updateSensorData(String id, String name, String val) {
-        DeviceListRow sensor = (DeviceListRow)(scene.lookup(id));
-        sensor.update(name, val);
+        VBox box = (VBox)(scene.lookup("#sensors_list"));
+        id = "#" + id;
+        DeviceListRow sensor = (DeviceListRow)(box.lookup(id));
+        if(sensor != null) {
+            sensor.update(name, val);
+        } else {
+            throw new NullPointerException("Sensor not found");
+        }
     }
 
     public void addMotorData(String id, String name, String val) {
-        VBox box = (VBox)(scene.lookup("#motors_list"));
-        motors.add(id);
-        DeviceListRow item = new DeviceListRow(id, name, val);
-        box.getChildren().add(item);
+        if(motors.indexOf(id) != -1) {
+            updateMotorData(id,name,val);
+        } else {
+            VBox box = (VBox)(scene.lookup("#motors_list"));
+            motors.add(id);
+            DeviceListRow item = new DeviceListRow(id, name, val);
+            System.out.println(item.getId());
+            box.getChildren().add(item);
+        }
     }
 
     public void updateMotorData(String id, String name, String val) {
-        DeviceListRow motor = (DeviceListRow)(scene.lookup(id));
-        motor.update(name, val);
+        VBox box = (VBox)(scene.lookup("#motors_list"));
+        id = "#" + id;
+        DeviceListRow motor = (DeviceListRow)(box.lookup(id));
+        if(motor != null) {
+            motor.update(name, val);
+        } else {
+            throw new NullPointerException("Motor not found");
+        }
     }
 
     public void addSubsystem(String id, String subsystem, String command) {
-        VBox box = (VBox)(scene.lookup("#table_2"));
-        subsystems.add(id);
-        StatusRow system = new StatusRow(id, subsystem, command);
-        box.getChildren().add(system);
+        if(subsystems.indexOf(id) != -1) {
+            updateSystemCommand(id,command);
+        } else {
+            VBox box = (VBox)(scene.lookup("#table_2"));
+            subsystems.add(id);
+            StatusRow system = new StatusRow(id, subsystem, command);
+            box.getChildren().add(system);
+        }
     }
 
     public void updateSystemCommand(String id, String command) {
-        StatusRow system = (StatusRow)(scene.lookup(id));
-        system.updateCommand(command);
+        VBox box = (VBox)(scene.lookup("#table_2"));
+        id = "#" + id;
+        StatusRow system = (StatusRow)(box.lookup(id));
+        if(system != null) {
+            system.updateCommand(command);
+        } else {
+            throw new NullPointerException("Subsystem not found");
+        }
     }
 
     public void update() {

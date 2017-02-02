@@ -2,9 +2,6 @@ package sample;
 
 import javafx.scene.layout.HBox;
 
-/**
- * Created by sethideep23 on 1/3/17.
- */
 public class DeviceListRow extends HBox {
     DeviceListItem name;
     DeviceListItem val;
@@ -13,7 +10,9 @@ public class DeviceListRow extends HBox {
         style();
         setId(id);
         this.name = new DeviceListItem(name);
+        this.name.setId("name");
         this.val = new DeviceListItem(val);
+        this.val.setId("val");
         getChildren().addAll(this.name, this.val);
     }
 
@@ -23,7 +22,9 @@ public class DeviceListRow extends HBox {
     }
 
     public void update(String name, String val) {
-        this.name.setText(name);
-        this.val.setText(val);
+        getChildren().clear();
+        this.name = new DeviceListItem(name);
+        this.val = new DeviceListItem(val);
+        getChildren().addAll(this.name, this.val);
     }
 }
