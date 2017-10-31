@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -20,10 +21,13 @@ public class Main extends Application {
 //      Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
     	Group root = new Group();
         primaryStage.setTitle("Hello World");
+        primaryStage.setY(0);
+        primaryStage.setX(0);
         Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
         primaryStage.setScene(new Scene(root, screenBalance.getWidth(), 600)); 
         
         TabPane tabPane = new TabPane();
+        tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
         Tab driverTab = new Tab();
         driverTab.setText("Driver");
         driverTab.setContent(new Rectangle(2000, 600, Color.LIGHTSTEELBLUE));
