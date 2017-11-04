@@ -27,25 +27,26 @@ public class Main extends Application {
 		primaryStage.setX(0);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 		screenWidth = screenBalance.getWidth();
-	    screenHeight = 650;
+		screenHeight = 650;
 
 		primaryStage.setScene(new Scene(root, screenWidth, screenHeight));
 
 		TabPane tabPane = new TabPane();
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+
 		Tab driverTab = new Tab();
 		driverTab.setText("Driver");
-		driverTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
+		driverTab.setContent(new DriverController().getContent());
 		tabPane.getTabs().add(driverTab);
 
 		Tab swTab = new Tab();
 		swTab.setText("Software");
-		swTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
+		swTab.setContent(new SoftwareController().getContent());
 		tabPane.getTabs().add(swTab);
 
 		Tab graphTab = new Tab();
 		graphTab.setText("Graphs");
-		graphTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
+		graphTab.setContent(new GraphController().getContent());
 		tabPane.getTabs().add(graphTab);
 
 

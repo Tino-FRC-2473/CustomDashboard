@@ -11,7 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-public class GraphController extends Node {
+public class SoftwareController extends Node {
 
 	private BorderPane pane = new BorderPane();
 

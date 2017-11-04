@@ -11,8 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
-
 public class DriverController extends Node {
 
 	private BorderPane pane = new BorderPane();
