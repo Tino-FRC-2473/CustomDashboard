@@ -49,6 +49,9 @@ public class Main extends Application {
 		graphTab.setContent(new GraphController().getContent());
 		tabPane.getTabs().add(graphTab);
 
+		Tab testTab = new Tab();
+		testTab.setText("Test");
+
 
 		root.getChildren().add(tabPane);
 		primaryStage.show();
