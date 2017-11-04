@@ -24,13 +24,13 @@ public class Main extends Application {
         primaryStage.setY(0);
         primaryStage.setX(0);
         Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
-        primaryStage.setScene(new Scene(root, screenBalance.getWidth(), 600)); 
+        primaryStage.setScene(new Scene(root, screenBalance.getWidth(), 650)); 
         
         TabPane tabPane = new TabPane();
         tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
         Tab driverTab = new Tab();
         driverTab.setText("Driver");
-        driverTab.setContent(new Rectangle(2000, 600, Color.LIGHTSTEELBLUE));
+        driverTab.setContent(new Rectangle(2000, 650, Color.LIGHTSTEELBLUE));
         tabPane.getTabs().add(driverTab);
         
         Tab swTab = new Tab();
