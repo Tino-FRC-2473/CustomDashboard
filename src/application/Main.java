@@ -1,8 +1,10 @@
 package application;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -13,6 +15,8 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+	double screenWidth;
+	double screenHeight;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -22,24 +26,26 @@ public class Main extends Application {
 		primaryStage.setY(0);
 		primaryStage.setX(0);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
-		primaryStage.setScene(new Scene(root, screenBalance.getWidth(), 650));
+		screenWidth = screenBalance.getWidth();
+	    screenHeight = 650;
+
+		primaryStage.setScene(new Scene(root, screenWidth, screenHeight));
 
 		TabPane tabPane = new TabPane();
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
-
 		Tab driverTab = new Tab();
 		driverTab.setText("Driver");
-		driverTab.setContent(new DriverController().getContent());
+		driverTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
 		tabPane.getTabs().add(driverTab);
 
 		Tab swTab = new Tab();
 		swTab.setText("Software");
-		swTab.setContent(new Rectangle(2000, 600, Color.LIGHTSTEELBLUE));
+		swTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
 		tabPane.getTabs().add(swTab);
 
 		Tab graphTab = new Tab();
 		graphTab.setText("Graphs");
-		graphTab.setContent(new Rectangle(2000, 600, Color.LIGHTSTEELBLUE));
+		graphTab.setContent(new Rectangle(screenWidth, screenHeight, Color.LIGHTSTEELBLUE));
 		tabPane.getTabs().add(graphTab);
 
 
