@@ -1,20 +1,57 @@
 package application;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXRippler;
 import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
 import com.sun.javafx.jmx.MXNodeAlgorithmContext;
 import com.sun.javafx.sg.prism.NGNode;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 public class TestController extends Node{
 
-	private void setLayout() {
+	private BorderPane pane = new BorderPane();
 
+	private void setLayout() {
+		HBox box = new HBox();
+		box.setSpacing(100);
+
+		//BUTTON CODE
+		//Basic Button Stuff
+		JFXButton button = new JFXButton("CLICK ME");
+		button.setButtonType(JFXButton.ButtonType.RAISED);
+		button.setPrefSize(200, 100);
+		button.setFont(new Font("Comic Sans MS", 22));
+		button.setRipplerFill(Color.BLUEVIOLET);
+
+		//Button Background Stuff
+		BackgroundFill backgroundFill = new BackgroundFill(Color.LIGHTSTEELBLUE, new CornerRadii(20), Insets.EMPTY);
+		Background background = new Background(backgroundFill);
+		button.setBackground(background);
+
+		box.getChildren().add(button);
+
+		//CHECK BOX CODE
+		JFXCheckBox checkBox = new JFXCheckBox("CheckBox");
+		checkBox.setCheckedColor(Color.RED);
+		checkBox.setUnCheckedColor(Color.BLACK);
+		box.getChildren().add(checkBox);
+
+
+		pane.setCenter(box);
 	}
 
-	public void getContent() {
+	public Pane getContent() {
 		setLayout();
+		return pane;
 	}
 
 	@Override

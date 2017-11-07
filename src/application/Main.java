@@ -1,5 +1,6 @@
 package application;
 
+import com.jfoenix.controls.JFXTabPane;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
@@ -31,8 +32,9 @@ public class Main extends Application {
 
 		primaryStage.setScene(new Scene(root, screenWidth, screenHeight));
 
-		TabPane tabPane = new TabPane();
+		JFXTabPane tabPane = new JFXTabPane();
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
+		tabPane.setDisableAnimation(true);
 
 		Tab driverTab = new Tab();
 		driverTab.setText("Driver");
@@ -51,6 +53,8 @@ public class Main extends Application {
 
 		Tab testTab = new Tab();
 		testTab.setText("Test");
+		testTab.setContent(new TestController().getContent());
+		tabPane.getTabs().add(testTab);
 
 
 		root.getChildren().add(tabPane);
