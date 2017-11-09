@@ -1,8 +1,6 @@
 package application;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXRippler;
+import com.jfoenix.controls.*;
 import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
@@ -45,8 +43,20 @@ public class TestController extends Node{
 		checkBox.setUnCheckedColor(Color.BLACK);
 		box.getChildren().add(checkBox);
 
+		HBox box2 = new HBox();
+		box.setSpacing(100);
+
+		JFXTreeTableView tableView = new JFXTreeTableView();
+		JFXTreeTableColumn sensors = new JFXTreeTableColumn("Sensors");
+		JFXTreeTableColumn sensorValues = new JFXTreeTableColumn("Values");
+		tableView.setEditable(false);
+		tableView.getColumns().addAll(sensors, sensorValues);
+
+		box2.getChildren().add(tableView);
+
 
 		pane.setCenter(box);
+		pane.setTop(box2);
 	}
 
 	public Pane getContent() {

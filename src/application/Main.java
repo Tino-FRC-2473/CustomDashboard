@@ -1,8 +1,11 @@
 package application;
 
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -10,6 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -59,11 +65,43 @@ public class Main extends Application {
 
 		root.getChildren().add(tabPane);
 		primaryStage.show();
-
+		openConsole();
 	}
 
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	private void openConsole() {
+		Stage stage = new Stage();
+
+		Group root = new Group();
+
+		stage.setTitle("Console");
+		stage.setY(0);
+		stage.setX(0);
+
+		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
+		screenWidth = screenBalance.getWidth();
+		screenHeight = screenBalance.getHeight();
+
+		stage.setScene(new Scene(root, screenWidth, screenHeight));
+
+		JFXTabPane tabPane = new JFXTabPane();
+		tabPane.setTabClosingPolicy(TabClosingPolicy.SELECTED_TAB);
+		tabPane.setDisableAnimation(false);
+		tabPane.setPrefSize(screenWidth, screenHeight);
+
+		Tab consoleTab = new Tab();
+		consoleTab.setText("Console");
+		consoleTab.setContent(new ConsoleController().getContent());
+		tabPane.getTabs().add(consoleTab);
+
+		ConsoleController consoleController = new ConsoleController();
+
+
+		root.getChildren().add(tabPane);
+		stage.show();
 	}
 }

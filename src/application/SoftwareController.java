@@ -1,18 +1,18 @@
 package application;
 
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
 import com.sun.javafx.geom.BaseBounds;
 import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
 import com.sun.javafx.jmx.MXNodeAlgorithmContext;
 import com.sun.javafx.sg.prism.NGNode;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 public class SoftwareController extends Node {
 
@@ -22,22 +22,22 @@ public class SoftwareController extends Node {
 		// add all of your stuff here
 		HBox hBox = new HBox();
 		HBox inhBox = new HBox();
-		
-		TableView sensorTable = new TableView();
-		TableColumn sensorCol = new TableColumn("Sensors");
-		TableColumn sensorValCol = new TableColumn("Values");
+
+		JFXTreeTableView sensorTable = new JFXTreeTableView();
+		JFXTreeTableColumn sensorCol = new JFXTreeTableColumn("Sensors");
+		JFXTreeTableColumn sensorValCol = new JFXTreeTableColumn("Values");
 		sensorTable.setEditable(false);
 		sensorTable.getColumns().addAll(sensorCol, sensorValCol);
 		
-		TableView networkingTable = new TableView();
-		TableColumn netCol1 = new TableColumn("Networking!");
-		TableColumn netCol2 = new TableColumn("!gnikrowteN");
+		JFXTreeTableView networkingTable = new JFXTreeTableView();
+		JFXTreeTableColumn netCol1 = new JFXTreeTableColumn("Networking!");
+		JFXTreeTableColumn netCol2 = new JFXTreeTableColumn("!gnikrowteN");
 		sensorTable.setEditable(false);
 		networkingTable.getColumns().addAll(netCol1, netCol2);
-		
-		TableView motorTable = new TableView();
-		TableColumn motorCol = new TableColumn("Motors");
-		TableColumn motorValCol = new TableColumn("Values");
+
+		JFXTreeTableView motorTable = new JFXTreeTableView();
+		JFXTreeTableColumn motorCol = new JFXTreeTableColumn("Motors");
+		JFXTreeTableColumn motorValCol = new JFXTreeTableColumn("Values");
 		sensorTable.setEditable(false);
 		motorTable.getColumns().addAll(motorCol, motorValCol);
 		
