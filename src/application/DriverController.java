@@ -11,6 +11,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -37,13 +38,15 @@ public class DriverController extends Node {
 	private void setLayout() {
 		
 		VBox leftVB = new VBox();
+		leftVB.setAlignment(Pos.TOP_CENTER);
 //		leftVB.getChildren().add(new Rectangle(, screenHeight, Color.ALICEBLUE));
 		VBox rightVB = new VBox();
 		rightVB.getChildren().add(new Rectangle((screenWidth - camWidth) / 2, screenHeight, Color.ALICEBLUE));
-	
+		
 		VBox camera = new VBox();
 		
 		Label batteryLabel = new Label("battery left: " + batteryVal);
+		
 		JFXProgressBar battery = new JFXProgressBar();
 		
 		//help
@@ -53,8 +56,12 @@ public class DriverController extends Node {
 		
 		Label voltage = new Label("VOLTAGE: " +  volts);
 		voltage.setFont(new Font("Arial", 20));
+		voltage.setPadding(new Insets(10, 10, 10, 10));
 		
-		leftVB.getChildren().addAll(new Label("Motor Status:"), batteryLabel, battery, voltage);
+		Label title = new Label("MOTOR STATUS");
+		title.setPadding(new Insets(10, 10, 10, 10));
+		title.setFont(new Font("Arial", 20));
+		leftVB.getChildren().addAll(title, batteryLabel, battery, voltage);
 
 		pane.setLeft(leftVB);
 		pane.setRight(rightVB);
