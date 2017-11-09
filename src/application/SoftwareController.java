@@ -46,6 +46,10 @@ public class SoftwareController extends Node {
 		inhBox.getChildren().add(networkingTable);
 		inhBox.getChildren().add(motorTable);
 		pane.setCenter(hBox);
+		ValueNode testValueNode = new ValueNode("testValueNode");
+		ValueNodeAnimation testAnim = new ValueNodeAnimation(testValueNode);
+		pane.setCenter(testValueNode);
+		testAnim.start();
 	}
 
 	public Pane getContent() {
