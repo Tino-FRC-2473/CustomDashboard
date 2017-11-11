@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
+ 				
 public class Main extends Application {
 	double screenWidth;
 	double screenHeight;
@@ -29,7 +29,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 //      Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
 		Group root = new Group();
-		primaryStage.setTitle("Hello World");
+		primaryStage.setTitle("Dashboard :D");
 		primaryStage.setY(0);
 		primaryStage.setX(0);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
