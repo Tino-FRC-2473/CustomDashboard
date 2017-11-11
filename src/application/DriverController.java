@@ -46,10 +46,8 @@ public class DriverController extends Node {
 		
 		VBox leftVB = new VBox();
 		leftVB.setAlignment(Pos.TOP_CENTER);
+		leftVB.setPrefSize((screenWidth - camWidth) / 2, screenHeight);
 //		leftVB.getChildren().add(new Rectangle(, screenHeight, Color.ALICEBLUE));
-		VBox rightVB = new VBox();
-		rightVB.getChildren().add(new Rectangle((screenWidth - camWidth) / 2, screenHeight, Color.ALICEBLUE));
-		
 		VBox camera = new VBox();
 		
 		//LEFT VBOX THINGS
@@ -96,6 +94,10 @@ public class DriverController extends Node {
 	
 		
 		leftVB.getChildren().addAll(title, hbox, voltage, tempPane);
+		
+		//RIGHT VBOX THINGS
+		VBox rightVB = new VBox();
+		rightVB.setPrefSize((screenWidth - camWidth) / 2, screenHeight);
 		
 		pane.setLeft(leftVB);
 		pane.setRight(rightVB);
