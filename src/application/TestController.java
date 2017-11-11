@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -50,9 +52,16 @@ public class TestController extends Group {
 
 		box2.getChildren().add(tableView);
 
+		TableView table = new TableView();
+		table.setEditable(true);
+		TableColumn sensorNames = new TableColumn("Sensor");
+		TableColumn values = new TableColumn("Value");
+		
+		table.getColumns().addAll(sensorNames, values);
+		pane.setCenter(table);
+		//pane.setCenter(box);
+		//pane.setTop(box2);
 
-		pane.setCenter(box);
-		pane.setTop(box2);
 	}
 
 	public Pane getContent() {
