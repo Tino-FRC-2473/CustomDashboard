@@ -72,8 +72,8 @@ public class DriverController extends Group {
 
 		double minTemp = 0;
 		double maxTemp = 180;
-		double temperature = 100;
-		hand.setRotate(temperature - (minTemp + maxTemp) * 0.5); //clockwise from vertical
+		double temperature = 180;
+		hand.setRotate((-135 + 270 * (temperature - minTemp)/(maxTemp - minTemp))); //clockwise from vertical	
 
 		Label tempLabel = new Label(temperature + "\u00B0");
 		tempLabel.setFont(new Font("Sans Serif", 20));
