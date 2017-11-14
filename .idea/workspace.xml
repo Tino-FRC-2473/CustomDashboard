@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/temperature hand.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/temperature scale.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/DriverController.java" afterPath="$PROJECT_DIR$/src/application/DriverController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/TestController.java" afterPath="$PROJECT_DIR$/src/application/TestController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Main.java" afterPath="$PROJECT_DIR$/src/application/Main.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -135,21 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DriverController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DriverController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/application/DriverController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1110">
-              <caret line="86" column="27" lean-forward="false" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/application/TestController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="330">
+              <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -176,11 +168,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>rightVB</find>
-    </findStrings>
-  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -202,12 +189,12 @@
         <option value="$PROJECT_DIR$/jfoenix.jar!/com/jfoenix/controls/JFXButton.class" />
         <option value="$PROJECT_DIR$/src/application/Console.java" />
         <option value="$PROJECT_DIR$/src/application/Main.java" />
+        <option value="$PROJECT_DIR$/src/application/TestController.java" />
         <option value="$PROJECT_DIR$/src/application/SoftwareController.java" />
         <option value="$PROJECT_DIR$/src/application/GraphController.java" />
         <option value="$PROJECT_DIR$/src/application/ConsoleUpdater.java" />
         <option value="$PROJECT_DIR$/src/application/ConsoleController.java" />
         <option value="$PROJECT_DIR$/src/application/DriverController.java" />
-        <option value="$PROJECT_DIR$/src/application/TestController.java" />
       </list>
     </option>
   </component>
@@ -866,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="274">
           <caret line="354" column="13" lean-forward="false" selection-start-line="354" selection-start-column="13" selection-end-line="354" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,6 +867,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -996,16 +992,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/DriverController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1110">
-          <caret line="86" column="27" lean-forward="false" selection-start-line="86" selection-start-column="27" selection-end-line="86" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="30" lean-forward="false" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        <state relative-caret-position="330">
+          <caret line="34" column="44" lean-forward="false" selection-start-line="34" selection-start-column="44" selection-end-line="34" selection-end-column="44" />
           <folding />
         </state>
       </provider>

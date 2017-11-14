@@ -32,7 +32,6 @@ public class DriverController extends Group {
 
 		VBox leftVB = new VBox();
 		leftVB.setAlignment(Pos.TOP_CENTER);
-		leftVB.setPrefSize((screenWidth - camWidth) / 2, screenHeight);
 //		leftVB.getChildren().add(new Rectangle(, screenHeight, Color.ALICEBLUE));
 		VBox rightVB = new VBox();
 		rightVB.getChildren().add(new Rectangle((screenWidth - camWidth) / 2, screenHeight, Color.ALICEBLUE));
@@ -83,9 +82,7 @@ public class DriverController extends Group {
 	
 		
 		leftVB.getChildren().addAll(title, hbox, voltage, tempPane);
-		
-		//RIGHT VBOX THINGS
-		rightVB.setPrefSize((screenWidth - camWidth) / 2, screenHeight);
+
 		pane.setLeft(leftVB);
 		pane.setRight(rightVB);
 
