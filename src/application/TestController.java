@@ -1,16 +1,20 @@
 package application;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.*;
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.jmx.MXNodeAlgorithm;
+import com.sun.javafx.jmx.MXNodeAlgorithmContext;
+import com.sun.javafx.sg.prism.NGNode;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
-public class TestController extends Group {
+public class TestController extends Node{
 
 	private BorderPane pane = new BorderPane();
 
@@ -58,5 +62,25 @@ public class TestController extends Group {
 	public Pane getContent() {
 		setLayout();
 		return pane;
+	}
+
+	@Override
+	protected NGNode impl_createPeer() {
+		return null;
+	}
+
+	@Override
+	public BaseBounds impl_computeGeomBounds(BaseBounds bounds, BaseTransform tx) {
+		return null;
+	}
+
+	@Override
+	protected boolean impl_computeContains(double localX, double localY) {
+		return false;
+	}
+
+	@Override
+	public Object impl_processMXNode(MXNodeAlgorithm alg, MXNodeAlgorithmContext ctx) {
+		return null;
 	}
 }

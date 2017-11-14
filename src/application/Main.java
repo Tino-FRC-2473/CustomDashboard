@@ -1,18 +1,29 @@
 package application;
 
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	private double screenWidth;
-	private double screenHeight;
+	double screenWidth;
+	double screenHeight;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -86,6 +97,9 @@ public class Main extends Application {
 		consoleTab.setText("Console");
 		consoleTab.setContent(new ConsoleController().getContent());
 		tabPane.getTabs().add(consoleTab);
+
+		ConsoleController consoleController = new ConsoleController();
+
 
 		root.getChildren().add(tabPane);
 		stage.show();
