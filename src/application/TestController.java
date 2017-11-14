@@ -4,10 +4,14 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -56,9 +60,23 @@ public class TestController extends Group {
 		table.setEditable(true);
 		TableColumn sensorNames = new TableColumn("Sensor");
 		TableColumn values = new TableColumn("Value");
-
+		
+		
+		
+		ObservableList<ValueNode> data = FXCollections.observableArrayList(
+				new ValueNode("a", "0.0"),
+				new ValueNode("b", "0.1"),
+				new ValueNode("c", "0.3"),
+				new ValueNode("d", "0.5")
+				);
+		
+		sensorNames.setCellValueFactory(new PropertyValueFactory<>("Sensor"));
+		values.setCellValueFactory(new PropertyValueFactory<>("Values"));
+			
+		table.setItems(data);
 		table.getColumns().addAll(sensorNames, values);
-		pane.setCenter(table);
+		
+		pane.setCenter(table);	
 		//pane.setCenter(box);
 		//pane.setTop(box2);
 
