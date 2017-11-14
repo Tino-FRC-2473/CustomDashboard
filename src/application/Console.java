@@ -9,7 +9,7 @@ public class Console extends BorderPane {
 
 	public Console() {
 		display.setEditable(false);
-		display.setPadding(new Insets(5, 10, 0, 10));
+		display.setPadding(new Insets(5, 10, 2, 10));
 		setCenter(display);
 	}
 

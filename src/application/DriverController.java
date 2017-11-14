@@ -1,11 +1,6 @@
 package application;
 
 import com.jfoenix.controls.JFXProgressBar;
-import com.sun.javafx.geom.BaseBounds;
-import com.sun.javafx.geom.transform.BaseTransform;
-import com.sun.javafx.jmx.MXNodeAlgorithm;
-import com.sun.javafx.jmx.MXNodeAlgorithmContext;
-import com.sun.javafx.sg.prism.NGNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -60,12 +55,12 @@ public class DriverController extends Group {
 
 		//TEMPERATURE STUFF
 		StackPane tempPane = new StackPane();
-		Image img = new Image("temperature scale.png");
+		Image img = new Image("images/temperature scale.png");
 		ImageView temp = new ImageView(img);
 		temp.setFitWidth(200);
 		temp.setFitHeight(200);
 
-		Image img2 = new Image("temperature hand.png");
+		Image img2 = new Image("images/temperature hand.png");
 		ImageView hand = new ImageView(img2);
 		hand.setFitWidth(150);
 		hand.setFitHeight(150);
@@ -95,25 +90,5 @@ public class DriverController extends Group {
 	Pane getContent() {
 		setLayout();
 		return pane;
-	}
-
-	@Override
-	protected NGNode impl_createPeer() {
-		return null;
-	}
-
-	@Override
-	public BaseBounds impl_computeGeomBounds(BaseBounds bounds, BaseTransform tx) {
-		return null;
-	}
-
-	@Override
-	protected boolean impl_computeContains(double localX, double localY) {
-		return false;
-	}
-
-	@Override
-	public Object impl_processMXNode(MXNodeAlgorithm alg, MXNodeAlgorithmContext ctx) {
-		return null;
 	}
 }
