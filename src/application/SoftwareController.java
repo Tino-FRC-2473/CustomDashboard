@@ -8,8 +8,6 @@ import com.sun.javafx.jmx.MXNodeAlgorithm;
 import com.sun.javafx.jmx.MXNodeAlgorithmContext;
 import com.sun.javafx.sg.prism.NGNode;
 import javafx.scene.Node;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -28,7 +26,7 @@ public class SoftwareController extends Node {
 		JFXTreeTableColumn sensorValCol = new JFXTreeTableColumn("Values");
 		sensorTable.setEditable(false);
 		sensorTable.getColumns().addAll(sensorCol, sensorValCol);
-		
+
 		JFXTreeTableView networkingTable = new JFXTreeTableView();
 		JFXTreeTableColumn netCol1 = new JFXTreeTableColumn("Networking!");
 		JFXTreeTableColumn netCol2 = new JFXTreeTableColumn("!gnikrowteN");
@@ -40,7 +38,7 @@ public class SoftwareController extends Node {
 		JFXTreeTableColumn motorValCol = new JFXTreeTableColumn("Values");
 		sensorTable.setEditable(false);
 		motorTable.getColumns().addAll(motorCol, motorValCol);
-		
+
 		hBox.getChildren().add(sensorTable);
 		hBox.getChildren().add(inhBox);
 		inhBox.getChildren().add(networkingTable);
@@ -52,7 +50,7 @@ public class SoftwareController extends Node {
 		testAnim.start();
 	}
 
-	public Pane getContent() {
+	Pane getContent() {
 		setLayout();
 		return pane;
 	}

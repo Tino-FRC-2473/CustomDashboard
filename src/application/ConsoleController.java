@@ -9,7 +9,7 @@ import javafx.scene.Node;
 
 public class ConsoleController extends Node {
 
-	public static Console console = new Console();
+	private static Console console = new Console();
 
 	private void setLayout() {
 		for (int i = 0; i < 100; i++) {
@@ -17,7 +17,7 @@ public class ConsoleController extends Node {
 		}
 	}
 
-	public Node getContent() {
+	Node getContent() {
 		setLayout();
 		return console;
 	}

@@ -1,35 +1,24 @@
 package application;
 
 import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextArea;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TabPane.TabClosingPolicy;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-	double screenWidth;
-	double screenHeight;
+	private double screenWidth;
+	private double screenHeight;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 //      Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
 		Group root = new Group();
-		primaryStage.setTitle("Hello World");
+		primaryStage.setTitle("Dashboard :D");
 		primaryStage.setY(0);
 		primaryStage.setX(0);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
