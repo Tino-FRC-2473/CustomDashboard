@@ -9,7 +9,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
- 				
+
 public class Main extends Application {
 	private double screenWidth;
 	private double screenHeight;
@@ -18,7 +18,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 //      Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
 		Group root = new Group();
-		primaryStage.setTitle("Dashboard :D");
+		primaryStage.setTitle("Hello World");
 		primaryStage.setY(0);
 		primaryStage.setX(0);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
