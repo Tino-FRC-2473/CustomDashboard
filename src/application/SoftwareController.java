@@ -1,8 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -27,7 +24,6 @@ public class SoftwareController extends Group {
 		    new SensorModel("hasdasfi", "012312390"),
 		    new SensorModel("hiasfasf", "08123123124354235")
 		);
-	
 
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
 		    new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
@@ -42,7 +38,6 @@ public class SoftwareController extends Group {
 		    new NetworkingModel("hasdasfi", "012312390"),
 		    new NetworkingModel("hiasfasf", "08123123124354235")
 		);
-	
 	
 	private void setLayout() {
 		VBox vb1 = new VBox();
@@ -82,7 +77,7 @@ public class SoftwareController extends Group {
 		//help broken :(((((((((((((
 		TableColumn<SensorModel, String> sensorCol = new TableColumn<SensorModel, String>("Sensor");
 		sensorCol.setCellValueFactory(
-				new PropertyValueFactory<SensorModel, String>("sensor"));
+				new PropertyValueFactory<SensorModel, String>("name"));
 		
 		TableColumn<SensorModel, String> valueCol = new TableColumn<SensorModel, String>("Value");
 		valueCol.setCellValueFactory(
@@ -128,7 +123,7 @@ public class SoftwareController extends Group {
 		//help broken :(((((((((((((
 		TableColumn<NetworkingModel, String> deviceCol = new TableColumn<NetworkingModel, String>("Device");
 		deviceCol.setCellValueFactory(
-				new PropertyValueFactory<NetworkingModel, String>("deviceName"));
+				new PropertyValueFactory<NetworkingModel, String>("name"));
 		
 		TableColumn<NetworkingModel, String> valueCol = new TableColumn<NetworkingModel, String>("Value");
 		valueCol.setCellValueFactory(
