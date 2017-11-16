@@ -24,9 +24,9 @@ public class SoftwareController extends Group {
 		TableColumn<ValueNode, String> sensorNames = new TableColumn<ValueNode, String>("Sensor");
 		TableColumn<ValueNode, String> values = new TableColumn<ValueNode, String>("Value");
 		sensorNames.setCellValueFactory(
-				new PropertyValueFactory<ValueNode, String>("Sensor"));
+				new PropertyValueFactory<ValueNode, String>("name"));
 		values.setCellValueFactory(
-				new PropertyValueFactory<ValueNode, String>("Value"));
+				new PropertyValueFactory<ValueNode, String>("value"));
 		
 		table.setItems(data);
 		table.getColumns().addAll(sensorNames, values);
