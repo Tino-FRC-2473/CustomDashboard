@@ -1,8 +1,6 @@
 package application;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 
 public class ValueNode {
 
@@ -14,6 +12,14 @@ public class ValueNode {
 		this.value = new SimpleStringProperty(value);
 	}
 
+	public String getName() {
+		return name.get();
+	}
+	
+	public void setName(String n) {
+		name.set(n);
+	}
+	
 	public String getValue() {
 		return value.get();
 	}
@@ -22,13 +28,7 @@ public class ValueNode {
 		value.set(n);
 	}
 	
-	public String getName() {
-		return name.get();
-	}
-	
-	public void setName(String n) {
-		value.set(n);
-	}
+
 }
 
 //
