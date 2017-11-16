@@ -1,8 +1,6 @@
 package application;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -11,6 +9,10 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 public class ConsoleController extends Group {
 
@@ -25,7 +27,13 @@ public class ConsoleController extends Group {
 		exportButton.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(0), Insets.EMPTY)));
 
 		exportButton.setOnAction(event -> {
-			System.out.println(console.getText());
+			File file = new File(System.getProperty("user.home") + File.separator + "Dashboard Log");
+
+			try (PrintWriter writer = new PrintWriter(file)){
+				writer.println(console.getText());
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
 		});
 
 		console.setTop(exportButton);
