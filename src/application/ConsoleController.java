@@ -27,9 +27,9 @@ public class ConsoleController extends Group {
 		exportButton.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(0), Insets.EMPTY)));
 
 		exportButton.setOnAction(event -> {
-			File file = new File(System.getProperty("user.home") + File.separator + "Dashboard Log");
+			File file = new File(System.getProperty("user.home") + File.separator + "Dashboard Log.log");
 
-			try (PrintWriter writer = new PrintWriter(file)){
+			try (PrintWriter writer = new PrintWriter(file)) {
 				writer.println(console.getText());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
