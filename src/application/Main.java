@@ -1,5 +1,6 @@
 package application;
 
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -10,13 +11,21 @@ import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.Socket;
+import java.util.ArrayList;
+
 public class Main extends Application {
 	private double screenWidth;
 	private double screenHeight;
 
+	public static ArrayList<String> data = new ArrayList<>();
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//      Parent root = FXMLLoader.load(getClass().getResource("application.fxml"));
 		Group root = new Group();
 		primaryStage.setTitle("Dashboard :D");
 		primaryStage.setY(0);
@@ -58,7 +67,16 @@ public class Main extends Application {
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+		String serverAddress = JOptionPane.showInputDialog("Enter IP Address of the robot that is\n" + "running on port 8080:");
+
+		if (Integer.parseInt(serverAddress) != 0) {
+			Socket socket = new Socket(serverAddress, 8080);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			System.out.println("Connected");
+			data.add(reader.readLine());
+		}
+
 		launch(args);
 	}
 
