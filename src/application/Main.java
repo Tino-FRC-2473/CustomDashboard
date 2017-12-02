@@ -8,6 +8,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane.TabClosingPolicy;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -27,6 +28,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		Group root = new Group();
+		primaryStage.getIcons().add(new Image("images/icon.png"));
 		primaryStage.setTitle("Dashboard :D");
 		primaryStage.setY(0);
 		primaryStage.setX(0);
@@ -54,12 +56,6 @@ public class Main extends Application {
 		graphTab.setText("Graphs");
 		graphTab.setContent(new GraphController().getContent());
 		tabPane.getTabs().add(graphTab);
-
-		Tab testTab = new Tab();
-		testTab.setText("Test");
-		testTab.setContent(new TestController().getContent());
-		tabPane.getTabs().add(testTab);
-
 
 		root.getChildren().add(tabPane);
 		primaryStage.show();

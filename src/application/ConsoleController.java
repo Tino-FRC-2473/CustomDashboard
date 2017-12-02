@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 
 public class ConsoleController extends Group {
 
-	private Console console = new Console();
+	private ConsolePane consolePane = new ConsolePane();
 	private JFXButton exportButton = new JFXButton("Export");
 
 	private void setLayout() {
@@ -30,17 +30,17 @@ public class ConsoleController extends Group {
 			File file = new File(System.getProperty("user.home") + File.separator + "Dashboard Log.log");
 
 			try (PrintWriter writer = new PrintWriter(file)) {
-				writer.println(console.getText());
+				writer.println(consolePane.getText());
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		});
 
-		console.setTop(exportButton);
+		consolePane.setTop(exportButton);
 
 		new Thread(() -> {
 			for (int i = 0; i < 100; i++) {
-				console.addText(String.valueOf(i));
+				consolePane.addText(String.valueOf(i));
 				try {
 					Thread.sleep(500);
 				} catch (InterruptedException e) {
@@ -52,6 +52,6 @@ public class ConsoleController extends Group {
 
 	Node getContent() {
 		setLayout();
-		return console;
+		return consolePane;
 	}
 }
