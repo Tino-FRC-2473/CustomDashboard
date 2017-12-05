@@ -12,7 +12,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 
 public class SoftwareController extends Group {
@@ -26,6 +29,8 @@ public class SoftwareController extends Group {
 	double screenHeight = 630;
 	double textHeight = 20; //height of labels
 	private final double GAP = 10; //width of spacing/"gaps"
+	private StackPane stack = new StackPane(); //for background
+
 	
 	private final ObservableList<SensorModel> data = FXCollections.observableArrayList(
 		    new SensorModel("hi", "0812309128390"),
@@ -66,6 +71,9 @@ public class SoftwareController extends Group {
 		pane.setLeft(vb1);
 		pane.setCenter(vb2);
 		
+		Rectangle r = new Rectangle(screenWidth, screenHeight, Color.WHITE); //white background using stackpane
+		stack.getChildren().addAll(r, pane);
+
 		new AnimationTimer()
 		{
 			@Override
@@ -80,7 +88,7 @@ public class SoftwareController extends Group {
 
 	public Pane getContent() {
 		setLayout();
-		return pane;
+		return stack;
 	}
 	
 	public void sensorTable(){ 
@@ -98,7 +106,7 @@ public class SoftwareController extends Group {
 		sensorTable.getColumns().addAll(sensorCol, valueCol);
 		sensorTable.setMaxWidth(screenWidth / 2 - 2 * GAP);
 		sensorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY); //distributes the space between columns so that there is no extra column
-		sensorTable.setPrefHeight((screenHeight - (4.5) * GAP - 2 * textHeight)/ 2);
+		sensorTable.setPrefHeight((screenHeight - (4.5) * GAP - 2 * textHeight )/ 2);
 	}
 	
 	public void motorTable(){
