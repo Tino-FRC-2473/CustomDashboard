@@ -76,7 +76,9 @@ public class GraphController extends Node {
 
 		rightVB.getChildren().add(addScatterChart("scatter chart", "x axis", zVals, "y axis", yVals));
 		//example line chart
-		leftVB.getChildren().add(addLineChart("gr8 line chart", "x axis", "y axis", series)); //cant repeat series arraylist or strange things happen
+		AnimatedGraph testAnimGraph = new AnimatedGraph(new NumberAxis(), new NumberAxis(), 20);
+		leftVB.getChildren().add(testAnimGraph); //cant repeat series arraylist or strange things happen
+		testAnimGraph.run();
 
 		//example area chart
 		rightVB.getChildren().add(addAreaChart("area chart", "x axis", "y axis", series2));
