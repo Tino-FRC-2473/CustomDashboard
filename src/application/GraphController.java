@@ -8,6 +8,7 @@ import com.sun.javafx.sg.prism.NGNode;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.ScrollPane;
@@ -21,11 +22,11 @@ import javafx.stage.Screen;
 
 import java.util.ArrayList;
 
-public class GraphController extends Node {
+public class GraphController extends Group {
 
 	private BorderPane pane = new BorderPane();
 	private StackPane stack = new StackPane();
-	
+
 	private void setLayout() {
 
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
@@ -51,10 +52,10 @@ public class GraphController extends Node {
 
 		Rectangle r = new Rectangle(screenWidth, screenHeight, Color.WHITE); //white background using stackpane
 		stack.getChildren().addAll(r, pane);
-		
+
 		stack.getChildren().add(rightVB);
-		
-		
+
+
 		//delete later when u have actual data
 		ArrayList<Number> xVals = new ArrayList<Number>();
 		xVals.add(1);
@@ -153,26 +154,6 @@ public class GraphController extends Node {
 	Pane getContent() {
 		setLayout();
 		return stack;
-	}
-
-	@Override
-	protected NGNode impl_createPeer() {
-		return null;
-	}
-
-	@Override
-	public BaseBounds impl_computeGeomBounds(BaseBounds bounds, BaseTransform tx) {
-		return null;
-	}
-
-	@Override
-	protected boolean impl_computeContains(double localX, double localY) {
-		return false;
-	}
-
-	@Override
-	public Object impl_processMXNode(MXNodeAlgorithm alg, MXNodeAlgorithmContext ctx) {
-		return null;
 	}
 	/*public LineChart<Number, Number> addLineChart(String title, String xLabel, ArrayList<Number> xVals, String yLabel, ArrayList<Number> yVals){
 		final NumberAxis xAxis = new NumberAxis();

@@ -2,16 +2,31 @@ package application;
 
 import java.util.HashMap;
 
-public class Database {
+import java.util.Map;
 
-	private HashMap<String, Double> values;
-	
-	public Database() {
-		values = new HashMap<String, Double>();
+public class Database {
+	private Map<String, Double> doubleValues;
+
+	public static Database instance;
+
+	static {
+		instance = new Database();
 	}
-	
-	public HashMap<String, Double> getValues(){
-		return values;
+
+	private Database() {
+		doubleValues = new HashMap<>();
+
 	}
-	
+
+	public static Database instance() {
+		return instance;
+	}
+
+	public void setDouble(String key, Double value) {
+		doubleValues.put(key, value);
+	}
+
+	public Double getDouble(String key) {
+		return doubleValues.get(key);
+	}
 }

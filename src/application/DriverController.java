@@ -1,7 +1,7 @@
 package application;
 
 import com.jfoenix.controls.JFXProgressBar;
-
+import javafx.animation.AnimationTimer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -16,8 +16,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Screen;
 
@@ -28,32 +26,32 @@ public class DriverController extends Group {
 	private double screenWidth = screenBalance.getWidth();
 	private double screenHeight = 630;
 	private double x = 865; //x where camera ends and stuff goes
-	
+	private double battery = 1;
+
 	private TableView<MotorModel> motorTable;
 	private final double GAP = 10; //width of spacing/"gaps"
 	double textHeight = 20; //height of labels
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
-		    new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
-		);
-	
+			new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
+			new MotorModel("hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
+			new MotorModel("hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
+			new MotorModel("hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
+	);
+
 	private void setLayout() {
-		
+
 		VBox rightVB = new VBox();
 
 		ScrollPane sp = new ScrollPane();
 		sp.setPrefSize(screenWidth - x, screenHeight);
 		sp.setContent(rightVB);
-		
+
 		//LEFT VBOX THINGS
 		Label title = new Label("MOTOR STATUS");
 		title.setPadding(new Insets(10, 10, 10, 10));
 		title.setFont(new Font("Sans Serif", 20));
 
-		double battery = 0.64;
-		Label batteryLabel = new Label(battery * 100 + "%");
+		Label batteryLabel = new Label((int) (battery * 100) + "%");
 		batteryLabel.setFont(new Font("Arial", 40));
 		JFXProgressBar batteryBar = new JFXProgressBar();
 		//hbox for battery stuff
@@ -65,7 +63,6 @@ public class DriverController extends Group {
 		//help
 		batteryBar.setPrefWidth(screenWidth - x - 200);
 		batteryBar.setPrefHeight(30);
-		batteryBar.setProgress(battery);
 
 		int volts = 100;
 		Label voltage = new Label("VOLTAGE: " + volts + " v ");
@@ -87,7 +84,7 @@ public class DriverController extends Group {
 		double minTemp = 0;
 		double maxTemp = 180;
 		double temperature = 180;
-		hand.setRotate((-135 + 270 * (temperature - minTemp)/(maxTemp - minTemp))); //clockwise from vertical	
+		hand.setRotate((-135 + 270 * (temperature - minTemp) / (maxTemp - minTemp))); //clockwise from vertical
 
 		Label tempLabel = new Label(temperature + "\u00B0");
 		tempLabel.setFont(new Font("Sans Serif", 20));
@@ -96,47 +93,59 @@ public class DriverController extends Group {
 
 		motorTable();
 		rightVB.getChildren().addAll(title, hbox, voltage, tempPane, motorTable);
-		
-		
+
+
 //		Rectangle r = new Rectangle(screenWidth - x, 2 * screenHeight, Color.WHITE); //white background using stackpane
 //		r.setLayoutX(x);
 		//stack.getChildren().add(r);
-		
+
+		new AnimationTimer() {
+
+			@Override
+			public void handle(long now) {
+				batteryBar.setProgress(battery);
+				batteryLabel.setText((int) (battery * 100) + "%");
+				battery -= 0.01;
+			}
+
+		}.start();
+
 		pane.setRight(sp);
 
-		
+
 	}
 
-	public void motorTable(){
-		motorTable = new TableView<MotorModel>();
-		
-		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
+	public void motorTable() {
+		motorTable = new TableView<>();
+
+		TableColumn<MotorModel, String> powerCol = new TableColumn<>("Power");
 		powerCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("power")); //"_____" is variable name
-		
-		TableColumn<MotorModel, String> stalledCol = new TableColumn<MotorModel, String>("Stalled");
+				new PropertyValueFactory<>("power")); //"_____" is variable name
+
+		TableColumn<MotorModel, String> stalledCol = new TableColumn<>("Stalled");
 		stalledCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("stalled"));
-		
-		TableColumn<MotorModel, String> voltageCol = new TableColumn<MotorModel, String>("Voltage");
+				new PropertyValueFactory<>("stalled"));
+
+		TableColumn<MotorModel, String> voltageCol = new TableColumn<>("Voltage");
 		voltageCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("voltage"));
-		
-		TableColumn<MotorModel, String> currentCol = new TableColumn<MotorModel, String>("Current");
+				new PropertyValueFactory<>("voltage"));
+
+		TableColumn<MotorModel, String> currentCol = new TableColumn<>("Current");
 		currentCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("current"));
-				
-		TableColumn<MotorModel, String> encoderCol = new TableColumn<MotorModel, String>("Encoder");
+				new PropertyValueFactory<>("current"));
+
+		TableColumn<MotorModel, String> encoderCol = new TableColumn<>("Encoder");
 		encoderCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("encoder"));
+				new PropertyValueFactory<>("encoder"));
 		motorTable.setItems(data2);
 		motorTable.getColumns().addAll(powerCol, stalledCol, voltageCol, currentCol, encoderCol);
 		motorTable.setMinWidth(screenWidth - x - 2 * GAP);
 		motorTable.setMaxHeight(400);
 		motorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-		
+
 	}
-	
+
+
 	Pane getContent() {
 		setLayout();
 		return pane;
