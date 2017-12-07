@@ -9,8 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -21,8 +25,9 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 	private double screenWidth;
-	private double screenHeight;
-
+	private double screenHeight = 630;
+	
+	private double x = 865; //x where camera ends and stuff goes
 	public static ArrayList<String> data = new ArrayList<>();
 
 	@Override
@@ -32,12 +37,19 @@ public class Main extends Application {
 		primaryStage.setTitle("Dashboard :D");
 		primaryStage.setY(0);
 		primaryStage.setX(0);
+		primaryStage.initStyle(StageStyle.TRANSPARENT);
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 		screenWidth = screenBalance.getWidth();
-		screenHeight = 650;
 
-		primaryStage.setScene(new Scene(root, screenWidth, screenHeight));
 
+//		Rectangle r = new Rectangle(screenWidth - x, screenHeight, Color.WHITE);
+//		r.setLayoutX(x);
+//		root.getChildren().add(r);
+//		
+		Scene scene = new Scene(root, screenWidth, screenHeight);
+		scene.setFill(Color.TRANSPARENT);
+		primaryStage.setScene(scene);
+		
 		JFXTabPane tabPane = new JFXTabPane();
 		tabPane.setTabClosingPolicy(TabClosingPolicy.UNAVAILABLE);
 		tabPane.setDisableAnimation(true);
@@ -92,7 +104,7 @@ public class Main extends Application {
 		stage.setScene(new Scene(root, screenWidth, screenHeight));
 
 		JFXTabPane tabPane = new JFXTabPane();
-		tabPane.setTabClosingPolicy(TabClosingPolicy.SELECTED_TAB);
+		tabPane.setTabClosingPolicy(TabClosingPolicy.SELECTED_TAB);	
 		tabPane.setDisableAnimation(false);
 		tabPane.setPrefSize(screenWidth, screenHeight);
 

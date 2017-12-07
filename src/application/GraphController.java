@@ -13,7 +13,10 @@ import javafx.scene.chart.*;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
@@ -21,7 +24,8 @@ import java.util.ArrayList;
 public class GraphController extends Node {
 
 	private BorderPane pane = new BorderPane();
-
+	private StackPane stack = new StackPane();
+	
 	private void setLayout() {
 
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
@@ -44,6 +48,13 @@ public class GraphController extends Node {
 		spL.setContent(leftVB);
 		BorderPane.setMargin(spL, new Insets(0, 10, 0, 0));
 
+
+		Rectangle r = new Rectangle(screenWidth, screenHeight, Color.WHITE); //white background using stackpane
+		stack.getChildren().addAll(r, pane);
+		
+		stack.getChildren().add(rightVB);
+		
+		
 		//delete later when u have actual data
 		ArrayList<Number> xVals = new ArrayList<Number>();
 		xVals.add(1);
@@ -65,7 +76,9 @@ public class GraphController extends Node {
 
 		rightVB.getChildren().add(addScatterChart("scatter chart", "x axis", zVals, "y axis", yVals));
 		//example line chart
-		leftVB.getChildren().add(addLineChart("gr8 line chart", "x axis", "y axis", series)); //cant repeat series arraylist or strange things happen
+		AnimatedGraph testAnimGraph = new AnimatedGraph(new NumberAxis(), new NumberAxis(), 20);
+		leftVB.getChildren().add(testAnimGraph); //cant repeat series arraylist or strange things happen
+		testAnimGraph.run();
 
 		//example area chart
 		rightVB.getChildren().add(addAreaChart("area chart", "x axis", "y axis", series2));
@@ -139,7 +152,7 @@ public class GraphController extends Node {
 
 	Pane getContent() {
 		setLayout();
-		return pane;
+		return stack;
 	}
 
 	@Override
