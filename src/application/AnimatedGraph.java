@@ -25,14 +25,13 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 	}
 
 	public void run() {
-		System.out.println("pless god");
 		
 		new AnimationTimer() {
 
+			int counter = 0;
 			@Override
 			public void handle(long now) {
-				if (now %50 == 0) {
-					System.out.println("henlo");
+				if(counter%4 == 0) {
 					series = new XYChart.Series<Number, Number>();
 					for (int i = 1; i <= domain; i++) {
 						series.getData().add(new XYChart.Data<Number, Number>(i, (int) (Math.random() * 20)));
@@ -41,18 +40,14 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 						self.getData().clear();
 					self.getData().add(series);
 				}
+				
+				counter++;
 
 			}
 			
 		}.start();
 		
 	}
-
-	// public void start() {
-	// t = new Thread(this);
-	// t.start();
-	// }
-
 	public void stop() {
 		stopped = true;
 	}
