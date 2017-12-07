@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -40,10 +41,10 @@ public class SoftwareController extends Group {
 		);
 
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
-		    new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
+		    new MotorModel("motor1", "hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor2", "hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor3", "hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor4", "hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
 		);
 	
 	private final ObservableList<NetworkingModel> data3 = FXCollections.observableArrayList(
@@ -60,7 +61,11 @@ public class SoftwareController extends Group {
 		motorTable();
 		networkingTable();
 		
-		vb1.getChildren().addAll(new Label("MOTOR"), motorTable);
+		AnimatedTable testAnimTable = new AnimatedTable(data2);
+		//vb1.getChildren().add(testAnimTable);
+		testAnimTable.run();
+		
+		vb1.getChildren().addAll(new Label("MOTOR"), testAnimTable);
 		vb1.setSpacing(GAP / 2);
         vb1.setPadding(new Insets(GAP, GAP, GAP, GAP));
         
@@ -74,15 +79,6 @@ public class SoftwareController extends Group {
 		Rectangle r = new Rectangle(screenWidth, screenHeight, Color.WHITE); //white background using stackpane
 		stack.getChildren().addAll(r, pane);
 
-		new AnimationTimer()
-		{
-			@Override
-			public void handle(long now) {
-				
-				
-			}
-			
-		}.start();
 		
 	}
 
@@ -112,6 +108,10 @@ public class SoftwareController extends Group {
 	public void motorTable(){
 		motorTable = new TableView<MotorModel>();
 		
+		TableColumn<MotorModel, String> motorCol = new TableColumn<MotorModel, String>("Motor");
+		motorCol.setCellValueFactory(
+				new PropertyValueFactory<MotorModel, String>("name"));
+		
 		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
 		powerCol.setCellValueFactory(
 				new PropertyValueFactory<MotorModel, String>("power")); //"_____" is variable name
@@ -131,8 +131,9 @@ public class SoftwareController extends Group {
 		TableColumn<MotorModel, String> encoderCol = new TableColumn<MotorModel, String>("Encoder");
 		encoderCol.setCellValueFactory(
 				new PropertyValueFactory<MotorModel, String>("encoder"));
+		
 		motorTable.setItems(data2);
-		motorTable.getColumns().addAll(powerCol, stalledCol, voltageCol, currentCol, encoderCol);
+		motorTable.getColumns().addAll(motorCol, powerCol, stalledCol, voltageCol, currentCol, encoderCol);
 		motorTable.setMinWidth(screenWidth / 2 - 2 * GAP);
 		motorTable.setPrefHeight(screenHeight - 3.5 * GAP - textHeight);
 		motorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

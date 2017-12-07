@@ -33,21 +33,21 @@ public class DriverController extends Group {
 	private final double GAP = 10; //width of spacing/"gaps"
 	double textHeight = 20; //height of labels
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
-		    new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
-		    new MotorModel("hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
+		    new MotorModel("motor1", "hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor2", "hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor3", "hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
+		    new MotorModel("motor4", "hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
 		);
 	
 	private void setLayout() {
 		
 		VBox rightVB = new VBox();
-
+		
+		
 		ScrollPane sp = new ScrollPane();
 		sp.setPrefSize(screenWidth - x, screenHeight);
 		sp.setContent(rightVB);
 		
-		//LEFT VBOX THINGS
 		Label title = new Label("MOTOR STATUS");
 		title.setPadding(new Insets(10, 10, 10, 10));
 		title.setFont(new Font("Sans Serif", 20));
@@ -96,7 +96,7 @@ public class DriverController extends Group {
 
 		motorTable();
 		rightVB.getChildren().addAll(title, hbox, voltage, tempPane, motorTable);
-		
+		rightVB.setAlignment(Pos.CENTER);
 		
 //		Rectangle r = new Rectangle(screenWidth - x, 2 * screenHeight, Color.WHITE); //white background using stackpane
 //		r.setLayoutX(x);
@@ -108,7 +108,11 @@ public class DriverController extends Group {
 	}
 
 	public void motorTable(){
-		motorTable = new TableView<MotorModel>();
+	motorTable = new TableView<MotorModel>();
+		
+		TableColumn<MotorModel, String> motorCol = new TableColumn<MotorModel, String>("Motor");
+		motorCol.setCellValueFactory(
+				new PropertyValueFactory<MotorModel, String>("name"));
 		
 		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
 		powerCol.setCellValueFactory(
@@ -129,10 +133,11 @@ public class DriverController extends Group {
 		TableColumn<MotorModel, String> encoderCol = new TableColumn<MotorModel, String>("Encoder");
 		encoderCol.setCellValueFactory(
 				new PropertyValueFactory<MotorModel, String>("encoder"));
+		
 		motorTable.setItems(data2);
-		motorTable.getColumns().addAll(powerCol, stalledCol, voltageCol, currentCol, encoderCol);
-		motorTable.setMinWidth(screenWidth - x - 2 * GAP);
-		motorTable.setMaxHeight(400);
+		motorTable.getColumns().addAll(motorCol, powerCol, stalledCol, voltageCol, currentCol, encoderCol);
+//		motorTable.setMinWidth(screenWidth / 2 - 2 * GAP);
+		motorTable.setPrefHeight(screenHeight - 3.5 * GAP - textHeight);
 		motorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		
 	}

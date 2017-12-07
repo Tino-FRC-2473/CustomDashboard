@@ -1,8 +1,10 @@
 package application;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-public class NetworkingModel{
+public class NetworkingModel implements Model{
 
 	private SimpleStringProperty name;
 	private SimpleStringProperty value;
@@ -11,7 +13,8 @@ public class NetworkingModel{
 		this.name = new SimpleStringProperty(device);
 		this.value = new SimpleStringProperty(value);
 	}
-
+	
+	@Override
 	public String getName() {
 		return name.get();
 	}
@@ -19,7 +22,7 @@ public class NetworkingModel{
 	public void setName(String n) {
 		name.set(n);
 	}
-	
+		
 	public String getValue() {
 		return value.get();
 	}

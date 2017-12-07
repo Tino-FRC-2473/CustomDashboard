@@ -1,8 +1,10 @@
 package application;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-public class SensorModel{
+public class SensorModel implements Model{
 
 	private SimpleStringProperty name;
 	private SimpleStringProperty value;
@@ -12,6 +14,7 @@ public class SensorModel{
 		this.value = new SimpleStringProperty(value);
 	}
 
+	@Override
 	public String getName() {
 		return name.get();
 	}
@@ -26,5 +29,5 @@ public class SensorModel{
 	
 	public void setValue(String n) {
 		value.set(n);
-	}	
+	}
 }

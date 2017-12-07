@@ -74,7 +74,7 @@ public class Main extends Application {
 		openConsole();
 	}
 
-
+//NETWORKING CODE
 	public static void main(String[] args) throws IOException {
 		String serverAddress = JOptionPane.showInputDialog("Enter IP Address of the robot that is\n" + "running on port 8080:");
 
@@ -87,7 +87,8 @@ public class Main extends Application {
 
 		launch(args);
 	}
-
+//NETWORKING CODE
+	
 	private void openConsole() {
 		Stage stage = new Stage();
 

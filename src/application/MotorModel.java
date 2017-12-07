@@ -1,21 +1,34 @@
 package application;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-public class MotorModel{
-
+public class MotorModel implements Model{
+	
+	private SimpleStringProperty name;
 	private SimpleStringProperty power;
 	private SimpleStringProperty stalled;
 	private SimpleStringProperty voltage;
 	private SimpleStringProperty current;
 	private SimpleStringProperty encoder;
 
-	public MotorModel(String power, String stalled, String voltage, String current, String encoder) { //need to find out way to track values
+	public MotorModel(String motorName, String power, String stalled, String voltage, String current, String encoder) { //need to find out way to track values
+		this.name = new SimpleStringProperty(motorName);
 		this.power = new SimpleStringProperty(power);
 		this.stalled = new SimpleStringProperty(stalled);
 		this.voltage = new SimpleStringProperty(voltage);
 		this.current = new SimpleStringProperty(current);
 		this.encoder = new SimpleStringProperty(encoder);
+	}
+	
+	@Override
+	public String getName() {
+		return name.get();
+	}
+	
+	public void setName(String n){
+		name.set(n);
 	}
 
 	public String getPower() {
@@ -57,5 +70,4 @@ public class MotorModel{
 	public void setEncoder(String n) {
 		encoder.set(n);
 	}
-
 }
