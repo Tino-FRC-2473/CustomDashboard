@@ -22,23 +22,13 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 	}
 	
 	public void run() {
-<<<<<<< HEAD
-=======
-		System.out.println("pless god");
 
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 		new AnimationTimer() {
 			
 			@Override
 			public void handle(long now) {
-<<<<<<< HEAD
 				if (now % 50 == 0) {
 					series = new XYChart.Series<Number, Number>();
-=======
-				if ((now % 50) == 0) {
-					System.out.println("henlo");
-					series = new XYChart.Series<>();
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 					for (int i = 1; i <= domain; i++) {
 						series.getData().add(new XYChart.Data<>(i, (int) (Math.random() * 20)));
 					}

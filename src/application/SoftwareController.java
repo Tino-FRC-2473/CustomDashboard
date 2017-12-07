@@ -41,21 +41,14 @@ public class SoftwareController extends Group {
 	);
 
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
-<<<<<<< HEAD
+
 		    new MotorModel("motor1", "hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
 		    new MotorModel("motor2", "hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
 		    new MotorModel("motor3", "hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
 		    new MotorModel("motor4", "hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
 		);
 	
-=======
-			new MotorModel("hi", "0812309128390", "asldjaskld", "asldaskld", "asdlkajsd"),
-			new MotorModel("hadi", "0828390", "asldjaskld", "asldaskld", "asdlkajsd"),
-			new MotorModel("hasdasfi", "012312390", "asldjaskld", "asldaskld", "asdlkajsd"),
-			new MotorModel("hiasfasf", "08123123124354235", "asldjaskld", "asldaskld", "asdlkajsd")
-	);
 
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 	private final ObservableList<NetworkingModel> data3 = FXCollections.observableArrayList(
 			new NetworkingModel("hi", "0812309128390"),
 			new NetworkingModel("hadi", "0828390"),
@@ -69,17 +62,13 @@ public class SoftwareController extends Group {
 		sensorTable();
 		motorTable();
 		networkingTable();
-<<<<<<< HEAD
-		
+
 		AnimatedTable testAnimTable = new AnimatedTable(data2);
 		//vb1.getChildren().add(testAnimTable);
 		testAnimTable.run();
 		
 		vb1.getChildren().addAll(new Label("MOTOR"), testAnimTable);
-=======
 
-		vb1.getChildren().addAll(new Label("MOTOR"), motorTable);
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 		vb1.setSpacing(GAP / 2);
 		vb1.setPadding(new Insets(GAP, GAP, GAP, GAP));
 
@@ -93,19 +82,6 @@ public class SoftwareController extends Group {
 		Rectangle r = new Rectangle(screenWidth, screenHeight, Color.WHITE); //white background using stackpane
 		stack.getChildren().addAll(r, pane);
 
-<<<<<<< HEAD
-		
-=======
-		new AnimationTimer() {
-			@Override
-			public void handle(long now) {
-
-
-			}
-
-		}.start();
-
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 	}
 
 	public Pane getContent() {
@@ -133,15 +109,12 @@ public class SoftwareController extends Group {
 
 	public void motorTable() {
 		motorTable = new TableView<MotorModel>();
-<<<<<<< HEAD
 		
 		TableColumn<MotorModel, String> motorCol = new TableColumn<MotorModel, String>("Motor");
 		motorCol.setCellValueFactory(
 				new PropertyValueFactory<MotorModel, String>("name"));
 		
-=======
 
->>>>>>> 284a6cd4171caf60fc690018c38ab5a47f91b73e
 		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
 		powerCol.setCellValueFactory(
 				new PropertyValueFactory<MotorModel, String>("power")); //"_____" is variable name
