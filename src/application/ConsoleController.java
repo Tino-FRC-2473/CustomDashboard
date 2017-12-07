@@ -1,6 +1,7 @@
 package application;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -10,6 +11,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -48,6 +50,17 @@ public class ConsoleController extends Group {
 				}
 			}
 		}).start();
+
+		JFXComboBox<Label> jfxCombo = new JFXComboBox<Label>();
+
+		jfxCombo.getItems().add(new Label("Low"));
+		jfxCombo.getItems().add(new Label("Medium"));
+		jfxCombo.getItems().add(new Label("High"));
+
+		jfxCombo.setPromptText("Select Logging Level");
+
+		consolePane.setRight(jfxCombo);
+
 	}
 
 	Node getContent() {
