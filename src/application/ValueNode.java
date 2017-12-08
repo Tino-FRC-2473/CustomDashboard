@@ -1,8 +1,6 @@
 package application;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 
 public class ValueNode {
 

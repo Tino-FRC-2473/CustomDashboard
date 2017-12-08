@@ -17,18 +17,19 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
 public class Main extends Application {
 	private double screenWidth;
 	private double screenHeight;
+	public static Socket socket;
+	public static DataInputStream dataInputStream;
+	public static DataOutputStream dataOutputStream;
 
 	private double x = 865; //x where camera ends and stuff goes
-	public static ArrayList<String> data = new ArrayList<>();
+
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -75,21 +76,22 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
-//NETWORKING CODE
+	//NETWORKING CODE
 	public static void main(String[] args) throws IOException {
 		String serverAddress = JOptionPane.showInputDialog("Enter IP Address of the robot that is\n" + "running on port 8080:");
 
 		if (Integer.parseInt(serverAddress) != 0) {
-			Socket socket = new Socket(serverAddress, 8080);
-			BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			System.out.println("Connected");
-			data.add(reader.readLine());
+			socket = new Socket(serverAddress, 8080);
+			dataInputStream = new DataInputStream(socket.getInputStream());
+			dataOutputStream = new DataOutputStream(socket.getOutputStream());
+			String test = "";
+			test = dataInputStream.readUTF();
+			System.out.println(test);
 		}
 
 		launch(args);
 	}
-//NETWORKING CODE
-	
+
 	private void openConsole() {
 		Stage stage = new Stage();
 

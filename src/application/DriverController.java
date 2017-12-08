@@ -10,9 +10,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -95,12 +93,6 @@ public class DriverController extends Group {
 		rightVB.getChildren().addAll(title, hbox, voltage, tempPane, motorTable);
 
 		rightVB.setAlignment(Pos.CENTER);
-		
-
-//		Rectangle r = new Rectangle(screenWidth - x, 2 * screenHeight, Color.WHITE); //white background using stackpane
-//		r.setLayoutX(x);
-		//stack.getChildren().add(r);
-
 		new AnimationTimer() {
 
 			@Override
