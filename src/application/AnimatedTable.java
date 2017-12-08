@@ -1,21 +1,16 @@
 package application;
 
 import java.util.Random;
-
 import javafx.animation.AnimationTimer;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
-import javafx.scene.chart.Axis;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 	
 public class AnimatedTable extends TableView<Model>{
 
 	private boolean stopped;
-	private ObservableList<Model> data; //MAKE A GENERAL MODEL LATER
+	private ObservableList<Model> data; 
 	private Class c; // only for now while there are random generated values
 	public AnimatedTable(Class c, ObservableList data) {
 		this.data = data;
@@ -32,19 +27,14 @@ public class AnimatedTable extends TableView<Model>{
 			@Override
 			public void handle(long now) {
 				if (now % 50 == 0) {
-
-					Random r = new Random();
 					if(c.equals(MotorModel.class))
 						updateValue(new MotorModel("motor" + String.valueOf(new Random().nextInt(10)),String.valueOf(Math.random()),String.valueOf(Math.random()),String.valueOf(Math.random()),String.valueOf(Math.random()),String.valueOf(Math.random())));
 					else if(c.equals(SensorModel.class))
 						updateValue(new SensorModel("sensor" + String.valueOf(new Random().nextInt(10)),String.valueOf(Math.random())));	
 					else if(c.equals(NetworkingModel.class))
 						updateValue(new NetworkingModel("thing" + String.valueOf(new Random().nextInt(10)),String.valueOf(Math.random())));
-//					self.getItems().clear(); //REMOVING THIS SOLVED THE PROBLEM WOooOOOOOOO
-					setItems(data);//add in new
-
-					refresh(); //refresh
-					
+					setItems(data);
+					refresh(); 	
 				}
 			}
 			
@@ -52,10 +42,6 @@ public class AnimatedTable extends TableView<Model>{
 		
 	}
 
-	//strategy: update it
-	//parameters: model
-	//use getter to get the row
-	//if its alreayd in the table, tthen update the existing one, otherwise add it
 	private void updateValue(Model model){
 		String name = model.getName();
 		int index = -1; //-1 = doesnt exist, other number = index 
@@ -67,7 +53,7 @@ public class AnimatedTable extends TableView<Model>{
 		if(index != -1){ //gets rid of previous value
 			data.remove(index); 
 		}
-		data.add(0, model);
+		data.add(0, model); //the most recently updated are towards the top of the table
 	}
 	
 	//sets up the columns

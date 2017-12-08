@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class Main extends Application {
 	private double screenWidth;
-	private double screenHeight = 630;
+	private double screenHeight;
 
 	private double x = 865; //x where camera ends and stuff goes
 	public static ArrayList<String> data = new ArrayList<>();

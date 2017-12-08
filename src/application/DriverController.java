@@ -24,11 +24,11 @@ public class DriverController extends Group {
 	private BorderPane pane = new BorderPane();
 	private Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 	private double screenWidth = screenBalance.getWidth();
-	private double screenHeight = 630;
+	private double screenHeight = screenBalance.getHeight() / 1.5;
 	private double x = 865; //x where camera ends and stuff goes
 	private double battery = 1;
 
-	private TableView<MotorModel> motorTable;
+	private AnimatedTable motorTable;
 	private final double GAP = 10; //width of spacing/"gaps"
 	double textHeight = 20; //height of labels
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
@@ -119,39 +119,11 @@ public class DriverController extends Group {
 
 
 	public void motorTable(){
-	motorTable = new TableView<MotorModel>();
-		
-		TableColumn<MotorModel, String> motorCol = new TableColumn<MotorModel, String>("Motor");
-		motorCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("name"));
-		
-		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
-
-		powerCol.setCellValueFactory(
-				new PropertyValueFactory<>("power")); //"_____" is variable name
-
-		TableColumn<MotorModel, String> stalledCol = new TableColumn<>("Stalled");
-		stalledCol.setCellValueFactory(
-				new PropertyValueFactory<>("stalled"));
-
-		TableColumn<MotorModel, String> voltageCol = new TableColumn<>("Voltage");
-		voltageCol.setCellValueFactory(
-				new PropertyValueFactory<>("voltage"));
-
-		TableColumn<MotorModel, String> currentCol = new TableColumn<>("Current");
-		currentCol.setCellValueFactory(
-				new PropertyValueFactory<>("current"));
-
-		TableColumn<MotorModel, String> encoderCol = new TableColumn<>("Encoder");
-		encoderCol.setCellValueFactory(
-
-				new PropertyValueFactory<>("encoder"));
-		motorTable.setItems(data2);
-		motorTable.getColumns().addAll(motorCol, powerCol, stalledCol, voltageCol, currentCol, encoderCol);
-//		motorTable.setMinWidth(screenWidth / 2 - 2 * GAP);
+		motorTable = new AnimatedTable(MotorModel.class, data2);
+		motorTable.setMinWidth(screenWidth / 2 - 2 * GAP);
 		motorTable.setPrefHeight(screenHeight - 3.5 * GAP - textHeight);
 		motorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
+		motorTable.run();
 	}
 
 

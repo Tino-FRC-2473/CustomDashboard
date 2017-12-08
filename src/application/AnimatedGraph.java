@@ -10,7 +10,6 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 	private int domain; 
 	private boolean stopped;
 	private XYChart.Series<Number, Number> series;
-	private AnimatedGraph self;
 	
 	public AnimatedGraph(Axis<Number> arg0, Axis<Number> arg1, int d) {
 		super(arg0, arg1);
@@ -18,7 +17,6 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 		series = new XYChart.Series<>();
 		domain = d;
 		this.setAnimated(false);
-		self = this;
 	}
 	
 	public void run() {
@@ -33,9 +31,9 @@ public class AnimatedGraph extends LineChart<Number, Number> {
 					for (int i = 1; i <= domain; i++) {
 						series.getData().add(new XYChart.Data<>(i, (int) (Math.random() * 20)));
 					}
-					if (self.getData().size() > 0)
-						self.getData().clear();
-					self.getData().add(series);
+					if (getData().size() > 0)
+						getData().clear();
+					getData().add(series);
 				}
 				
 				counter++;

@@ -31,7 +31,7 @@ public class GraphController extends Group {
 
 		Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 		double screenWidth = screenBalance.getWidth();
-		double screenHeight = 630;
+		double screenHeight = screenBalance.getHeight() / 1.5;
 
 		//right scroll pane
 		ScrollPane spR = new ScrollPane();

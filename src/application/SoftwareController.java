@@ -27,7 +27,7 @@ public class SoftwareController extends Group {
 
 	private Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 	private double screenWidth = screenBalance.getWidth();
-	private double screenHeight = 630;
+	private double screenHeight = screenBalance.getHeight() / 1.5;
 	private double textHeight = 20; //height of labels
 	private final double GAP = 10; //width of spacing/"gaps"
 	private StackPane stack = new StackPane(); //for background
