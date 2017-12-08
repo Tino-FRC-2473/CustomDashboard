@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ConsoleController extends Group {
@@ -41,17 +42,16 @@ public class ConsoleController extends Group {
 		consolePane.setTop(exportButton);
 
 		new Thread(() -> {
-			for (int i = 0; i < 100; i++) {
-				consolePane.addText(String.valueOf(i));
-				try {
-					Thread.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+			try {
+				String test = Main.dataInputStream.readUTF();
+				consolePane.addText(test);
+				Thread.sleep(500);
+			} catch (IOException | InterruptedException e) {
+				e.printStackTrace();
 			}
 		}).start();
 
-		JFXComboBox<Label> jfxCombo = new JFXComboBox<Label>();
+		JFXComboBox<Label> jfxCombo = new JFXComboBox<>();
 
 		jfxCombo.getItems().add(new Label("Low"));
 		jfxCombo.getItems().add(new Label("Medium"));
