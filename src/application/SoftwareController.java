@@ -21,9 +21,9 @@ import javafx.stage.Screen;
 
 public class SoftwareController extends Group {
 	private BorderPane pane = new BorderPane();
-	private TableView<SensorModel> sensorTable;
-	private TableView<NetworkingModel> networkingTable;
-	private TableView<MotorModel> motorTable;
+	private AnimatedTable sensorTable;
+	private AnimatedTable networkingTable;
+	private AnimatedTable motorTable;
 
 	private Rectangle2D screenBalance = Screen.getPrimary().getVisualBounds(); //for getting screen dimensions
 	private double screenWidth = screenBalance.getWidth();
@@ -34,10 +34,10 @@ public class SoftwareController extends Group {
 
 
 	private final ObservableList<SensorModel> data = FXCollections.observableArrayList(
-			new SensorModel("hi", "0812309128390"),
-			new SensorModel("hadi", "0828390"),
-			new SensorModel("hasdasfi", "012312390"),
-			new SensorModel("hiasfasf", "08123123124354235")
+			new SensorModel("sensor1", "0812309128390"),
+			new SensorModel("sensor2", "0828390"),
+			new SensorModel("sensor3", "012312390"),
+			new SensorModel("sensor4", "08123123124354235")
 	);
 
 	private final ObservableList<MotorModel> data2 = FXCollections.observableArrayList(
@@ -50,10 +50,10 @@ public class SoftwareController extends Group {
 	
 
 	private final ObservableList<NetworkingModel> data3 = FXCollections.observableArrayList(
-			new NetworkingModel("hi", "0812309128390"),
-			new NetworkingModel("hadi", "0828390"),
-			new NetworkingModel("hasdasfi", "012312390"),
-			new NetworkingModel("hiasfasf", "08123123124354235")
+			new NetworkingModel("thing1", "0812309128390"),
+			new NetworkingModel("thing2", "0828390"),
+			new NetworkingModel("thing3", "012312390"),
+			new NetworkingModel("thing4", "08123123124354235")
 	);
 
 	private void setLayout() {
@@ -62,12 +62,8 @@ public class SoftwareController extends Group {
 		sensorTable();
 		motorTable();
 		networkingTable();
-
-		AnimatedTable testAnimTable = new AnimatedTable(data2);
-		//vb1.getChildren().add(testAnimTable);
-		testAnimTable.run();
 		
-		vb1.getChildren().addAll(new Label("MOTOR"), testAnimTable);
+		vb1.getChildren().addAll(new Label("MOTOR"), motorTable);
 
 		vb1.setSpacing(GAP / 2);
 		vb1.setPadding(new Insets(GAP, GAP, GAP, GAP));
@@ -90,78 +86,27 @@ public class SoftwareController extends Group {
 	}
 
 	public void sensorTable() {
-		sensorTable = new TableView<SensorModel>();
-
-		TableColumn<SensorModel, String> sensorCol = new TableColumn<SensorModel, String>("Sensor");
-		sensorCol.setCellValueFactory(
-				new PropertyValueFactory<SensorModel, String>("name"));
-
-		TableColumn<SensorModel, String> valueCol = new TableColumn<SensorModel, String>("Value");
-		valueCol.setCellValueFactory(
-				new PropertyValueFactory<SensorModel, String>("value"));
-
-		sensorTable.setItems(data);
-		sensorTable.getColumns().addAll(sensorCol, valueCol);
+		sensorTable = new AnimatedTable(SensorModel.class, data);
 		sensorTable.setMaxWidth(screenWidth / 2 - 2 * GAP);
 		sensorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY); //distributes the space between columns so that there is no extra column
 		sensorTable.setPrefHeight((screenHeight - (4.5) * GAP - 2 * textHeight) / 2);
+		sensorTable.run();
 	}
 
 	public void motorTable() {
-		motorTable = new TableView<MotorModel>();
-		
-		TableColumn<MotorModel, String> motorCol = new TableColumn<MotorModel, String>("Motor");
-		motorCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("name"));
-		
-
-		TableColumn<MotorModel, String> powerCol = new TableColumn<MotorModel, String>("Power");
-		powerCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("power")); //"_____" is variable name
-
-		TableColumn<MotorModel, String> stalledCol = new TableColumn<MotorModel, String>("Stalled");
-		stalledCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("stalled"));
-
-		TableColumn<MotorModel, String> voltageCol = new TableColumn<MotorModel, String>("Voltage");
-		voltageCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("voltage"));
-
-		TableColumn<MotorModel, String> currentCol = new TableColumn<MotorModel, String>("Current");
-		currentCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("current"));
-
-		TableColumn<MotorModel, String> encoderCol = new TableColumn<MotorModel, String>("Encoder");
-		encoderCol.setCellValueFactory(
-				new PropertyValueFactory<MotorModel, String>("encoder"));
-		
-		motorTable.setItems(data2);
-		motorTable.getColumns().addAll(motorCol, powerCol, stalledCol, voltageCol, currentCol, encoderCol);
+		motorTable = new AnimatedTable(MotorModel.class, data2);
 		motorTable.setMinWidth(screenWidth / 2 - 2 * GAP);
 		motorTable.setPrefHeight(screenHeight - 3.5 * GAP - textHeight);
 		motorTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+		motorTable.run();
 
 	}
 
 	public void networkingTable() {
-		networkingTable = new TableView<NetworkingModel>();
-
-		TableColumn<NetworkingModel, String> deviceCol = new TableColumn<NetworkingModel, String>("Device");
-		deviceCol.setCellValueFactory(
-				new PropertyValueFactory<NetworkingModel, String>("name"));
-
-		TableColumn<NetworkingModel, String> valueCol = new TableColumn<NetworkingModel, String>("Value");
-		valueCol.setCellValueFactory(
-				new PropertyValueFactory<NetworkingModel, String>("value"));
-
-		networkingTable.setItems(data3);
-		networkingTable.getColumns().addAll(deviceCol, valueCol);
+		networkingTable = new AnimatedTable(NetworkingModel.class, data3);
 		networkingTable.setMaxWidth(screenWidth / 2 - 2 * GAP);
 		networkingTable.setPrefHeight((screenHeight - (4.5) * GAP - 2 * textHeight) / 2);
 		networkingTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-	}
-
-	public void updateSensorTable(String power, String stalled, String voltage, String current, String encoder) {
-
+		networkingTable.run();
 	}
 }
