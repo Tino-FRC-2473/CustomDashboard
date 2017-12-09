@@ -50,10 +50,12 @@ public class AnimatedTable extends TableView<Model>{
 				index = data.indexOf(i);
 			}
 		}
-		if(index != -1){ //gets rid of previous value
-			data.remove(index); 
+		if(index != -1){ //resets item value
+			data.set(index, model); 
 		}
-		data.add(0, model); //the most recently updated are towards the top of the table
+		else{
+			data.add(0, model); //adds new items and values
+		}
 	}
 	
 	//sets up the columns

@@ -22,8 +22,7 @@ public class ConsoleController extends Group {
 
 	private ConsolePane consolePane = new ConsolePane();
 	private JFXButton exportButton = new JFXButton("Export");
-	String test;
-	boolean receiving = true;
+	
 
 	private void setLayout() {
 		exportButton.setButtonType(JFXButton.ButtonType.FLAT);
@@ -45,16 +44,6 @@ public class ConsoleController extends Group {
 
 		consolePane.setTop(exportButton);
 
-		new Thread(() -> {
-			try {
-				while (receiving) {
-					test = Main.dataInputStream.readUTF();
-					//consolePane.addText(Arrays.toString();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}).start();
 
 		JFXComboBox<Label> jfxCombo = new JFXComboBox<>();
 

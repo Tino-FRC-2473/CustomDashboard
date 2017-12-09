@@ -75,8 +75,8 @@ public class GraphController extends Group {
 		leftVB.getChildren().add(testAnimGraph); //cant repeat series arraylist or strange things happen
 		testAnimGraph.run();
 
-		//example area chart
-		rightVB.getChildren().add(addAreaChart("area chart", "x axis", "y axis", series2));
+//		//example area chart
+//		rightVB.getChildren().add(addAreaChart("area chart", "x axis", "y axis", series2));
 
 		//example scatter plot
 		leftVB.getChildren().add(addScatterChart("a scatter chart", "x axis", xVals, "y axis", yVals));
