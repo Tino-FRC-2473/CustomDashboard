@@ -1,5 +1,6 @@
 package application;
 
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
@@ -8,17 +9,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane.TabClosingPolicy;
 import javafx.scene.image.Image;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Main extends Application {
 	private double screenWidth;
-	private double screenHeight; 
+	private double screenHeight;
 	public static Socket socket;
 	public static DataInputStream dataInputStream;
 	public static DataOutputStream dataOutputStream;
@@ -28,6 +33,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		openConsole();
 
 		Group root = new Group();
 		primaryStage.getIcons().add(new Image("images/icon.png"));
@@ -68,18 +74,19 @@ public class Main extends Application {
 
 		root.getChildren().add(tabPane);
 		primaryStage.show();
-		
-		openConsole();
 	}
 
 	//NETWORKING CODE
 	public static void main(String[] args) throws IOException {
 		String serverAddress = JOptionPane.showInputDialog("Enter IP Address of the robot that is\n" + "running on port 8080:");
 
-		if (!serverAddress.equals("0")) {
-			socket = new Socket(serverAddress, 2473);
+		if (Integer.parseInt(serverAddress) != 0) {
+			socket = new Socket(serverAddress, 8080);
 			dataInputStream = new DataInputStream(socket.getInputStream());
 			dataOutputStream = new DataOutputStream(socket.getOutputStream());
+			String test = "";
+			test = dataInputStream.readUTF();
+			System.out.println(test);
 		}
 
 		launch(args);

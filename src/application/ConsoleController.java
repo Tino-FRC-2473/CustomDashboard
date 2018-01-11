@@ -16,22 +16,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 public class ConsoleController extends Group {
 
 	private ConsolePane consolePane = new ConsolePane();
 	private JFXButton exportButton = new JFXButton("Export");
-	String test;
-	boolean receiving = true;
 
 	private void setLayout() {
 		exportButton.setButtonType(JFXButton.ButtonType.FLAT);
 		exportButton.setPrefSize(100, 50);
 		exportButton.setFont(new Font("Roboto", 18));
 		exportButton.setRipplerFill(Color.LIGHTSTEELBLUE);
-		exportButton
-				.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(0), Insets.EMPTY)));
+		exportButton.setBackground(new Background(new BackgroundFill(Color.LIGHTCYAN, new CornerRadii(0), Insets.EMPTY)));
 
 		exportButton.setOnAction(event -> {
 			File file = new File(System.getProperty("user.home") + File.separator + "Dashboard Log.log");
@@ -47,11 +43,10 @@ public class ConsoleController extends Group {
 
 		new Thread(() -> {
 			try {
-				while (receiving) {
-					test = Main.dataInputStream.readUTF();
-					//consolePane.addText(Arrays.toString();
-				}
-			} catch (IOException e) {
+				String test = Main.dataInputStream.readUTF();
+				consolePane.addText(test);
+				Thread.sleep(500);
+			} catch (IOException | InterruptedException e) {
 				e.printStackTrace();
 			}
 		}).start();

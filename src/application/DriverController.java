@@ -40,15 +40,11 @@ public class DriverController extends Group {
 
 		VBox rightVB = new VBox();
 		
+		
 		ScrollPane sp = new ScrollPane();
 		sp.setPrefSize(screenWidth - x, screenHeight);
 		sp.setContent(rightVB);
 
-		Label volt = new Label("BATTERY VOLTAGE");
-		volt.setPadding(new Insets(10, 10, 10, 10));
-		volt.setFont(new Font("Sans Serif", 20));
-
-		
 		Label title = new Label("MOTOR STATUS");
 		title.setPadding(new Insets(10, 10, 10, 10));
 		title.setFont(new Font("Sans Serif", 20));
@@ -58,7 +54,7 @@ public class DriverController extends Group {
 		JFXProgressBar batteryBar = new JFXProgressBar();
 		//hbox for battery stuff
 		HBox hbox = new HBox();
-		hbox.setAlignment(Pos.TOP_LEFT);
+		hbox.setAlignment(Pos.CENTER);
 		hbox.setSpacing(20);
 		hbox.getChildren().addAll(batteryBar, batteryLabel);
 		hbox.setPadding(new Insets(0, 10, 0, 10));
@@ -66,10 +62,37 @@ public class DriverController extends Group {
 		batteryBar.setPrefWidth(screenWidth - x - 200);
 		batteryBar.setPrefHeight(30);
 
-		motorTable();
-		rightVB.getChildren().addAll(volt, hbox, title, motorTable);
+		int volts = 100;
+		Label voltage = new Label("VOLTAGE: " + volts + " v ");
+		voltage.setFont(new Font("Arial", 30));
+		voltage.setPadding(new Insets(30, 10, 40, 10));
 
-		rightVB.setAlignment(Pos.TOP_LEFT);
+		//TEMPERATURE STUFF
+		StackPane tempPane = new StackPane();
+		Image img = new Image("images/temperature scale.png");
+		ImageView temp = new ImageView(img);
+		temp.setFitWidth(200);
+		temp.setFitHeight(200);
+
+		Image img2 = new Image("images/temperature hand.png");
+		ImageView hand = new ImageView(img2);
+		hand.setFitWidth(150);
+		hand.setFitHeight(150);
+
+		double minTemp = 0;
+		double maxTemp = 180;
+		double temperature = 180;
+		hand.setRotate((-135 + 270 * (temperature - minTemp) / (maxTemp - minTemp))); //clockwise from vertical
+
+		Label tempLabel = new Label(temperature + "\u00B0");
+		tempLabel.setFont(new Font("Sans Serif", 20));
+		tempLabel.setPadding(new Insets(120, 0, 0, 0));
+		tempPane.getChildren().addAll(temp, hand, tempLabel);
+
+		motorTable();
+		rightVB.getChildren().addAll(title, hbox, voltage, tempPane, motorTable);
+
+		rightVB.setAlignment(Pos.CENTER);
 		new AnimationTimer() {
 
 			@Override
