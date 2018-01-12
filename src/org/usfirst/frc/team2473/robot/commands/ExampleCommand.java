@@ -8,10 +8,12 @@
 package org.usfirst.frc.team2473.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team2473.robot.Robot;
 
 /**
- * An example command.  You can replace me with your own command.
+ * An example command. You can replace me with your own command.
  */
 public class ExampleCommand extends Command {
 	public ExampleCommand() {
@@ -27,6 +29,7 @@ public class ExampleCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		SmartDashboard.putNumber("Sensor Value", Robot.kExampleSubsystem.returnSensorOutput());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
