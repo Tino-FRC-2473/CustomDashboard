@@ -76,7 +76,8 @@ public class Main extends Application {
 			try {
 				while (receiving) {
 					test = Main.dataInputStream.readUTF();
-					ArrayList<String[]> datas = Parser.parse(test, ":", ";");
+					System.out.println(test);
+//					ArrayList<String[]> datas = Parser.parse(test, ":", ";");
 					
 				}
 			} catch (IOException e) {
