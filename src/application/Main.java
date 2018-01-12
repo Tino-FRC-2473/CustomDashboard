@@ -15,6 +15,7 @@ import javafx.stage.StageStyle;
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class Main extends Application {
 	private double screenWidth;
@@ -22,10 +23,10 @@ public class Main extends Application {
 	public static Socket socket;
 	public static DataInputStream dataInputStream;
 	public static DataOutputStream dataOutputStream;
-
 	private double x = 865; //x where camera ends and stuff goes
-
-
+	String test;
+	boolean receiving = true;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
@@ -70,14 +71,26 @@ public class Main extends Application {
 		primaryStage.show();
 		
 		openConsole();
+
+		new Thread(() -> {
+			try {
+				while (receiving) {
+					test = Main.dataInputStream.readUTF();
+					ArrayList<String[]> datas = Parser.parse(test, ":", ";");
+					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}).start();
 	}
 
-	//NETWORKING CODE
+	//NETWORKING COD
 	public static void main(String[] args) throws IOException {
 		String serverAddress = JOptionPane.showInputDialog("Enter IP Address of the robot that is\n" + "running on port 8080:");
 
 		if (!serverAddress.equals("0")) {
-			socket = new Socket(serverAddress, 2473);
+			socket = new Socket(serverAddress, 6969);
 			dataInputStream = new DataInputStream(socket.getInputStream());
 			dataOutputStream = new DataOutputStream(socket.getOutputStream());
 		}
