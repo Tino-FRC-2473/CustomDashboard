@@ -18,7 +18,7 @@ import org.usfirst.frc.team2473.robot.Robot;
 public class ExampleCommand extends Command {
 	public ExampleCommand() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.kExampleSubsystem);
+		requires(Robot.exampleSubsystem);
 	}
 
 	// Called just before this Command runs the first time
@@ -29,7 +29,7 @@ public class ExampleCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("Sensor Value", Robot.kExampleSubsystem.returnSensorOutput());
+		SmartDashboard.putNumber("Sensor Value", Robot.exampleSubsystem.returnSensorOutput());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
