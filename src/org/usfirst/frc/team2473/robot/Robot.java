@@ -7,12 +7,22 @@
 
 package org.usfirst.frc.team2473.robot;
 
+import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.PWMTalonSRX;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.opencv.core.Mat;
 import org.usfirst.frc.team2473.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2473.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team2473.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -25,6 +35,7 @@ import org.usfirst.frc.team2473.robot.subsystems.ExampleSubsystem;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final ExampleCommand exampleCommand = new ExampleCommand();
+	public static final DriveSubsystem driveSubSystem = new DriveSubsystem();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
@@ -36,6 +47,19 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
+		
+		//CAMERA STREAM
+		UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
+		cam.setResolution(640, 480);
+		CvSink cvSink = CameraServer.getInstance().getVideo();
+		CvSource outputStream = CameraServer.getInstance().putVideo("Test", 640, 480);
+		Mat src = new Mat();
+		new Thread(() -> {
+			while(!Thread.interrupted()) {
+				cvSink.grabFrame(src);
+				outputStream.putFrame(src);
+			}
+		}).start();
 	}
 
 	/**
