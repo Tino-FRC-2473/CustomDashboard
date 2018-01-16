@@ -24,10 +24,10 @@ import org.usfirst.frc.team2473.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final ExampleCommand exampleCommand = new ExampleCommand();
 	public static OI m_oi;
 
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -36,9 +36,6 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
 	/**
@@ -70,7 +67,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		m_autonomousCommand = exampleCommand;
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
