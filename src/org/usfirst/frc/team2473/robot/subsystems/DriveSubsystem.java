@@ -21,8 +21,8 @@ public class DriveSubsystem extends Subsystem {
 	
 	PWMTalonSRX leftTalon1 = new PWMTalonSRX(0); 
 	PWMTalonSRX leftTalon2 = new PWMTalonSRX(1);
-	PWMTalonSRX rightTalon1 = new PWMTalonSRX(1);
-	PWMTalonSRX rightTalon2 = new PWMTalonSRX(0);
+	PWMTalonSRX rightTalon1 = new PWMTalonSRX(2);
+	PWMTalonSRX rightTalon2 = new PWMTalonSRX(3);
 	
 	SpeedControllerGroup leftTalons = new SpeedControllerGroup(leftTalon1, leftTalon2);
 	SpeedControllerGroup rightTalons = new SpeedControllerGroup(rightTalon1, rightTalon2);
@@ -39,6 +39,6 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public double returnSensorOutput() {
-		return Math.random();
+		return drive.getExpiration();
 	}
 }
