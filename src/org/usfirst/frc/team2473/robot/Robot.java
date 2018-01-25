@@ -46,20 +46,20 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
+//		m_oi = new OI();
 		
-		//CAMERA STREAM
-		UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
-		cam.setResolution(640, 480);
-		CvSink cvSink = CameraServer.getInstance().getVideo();
-		CvSource outputStream = CameraServer.getInstance().putVideo("Test", 640, 480);
-		Mat src = new Mat();
-		new Thread(() -> {
-			while(!Thread.interrupted()) {
-				cvSink.grabFrame(src);
-				outputStream.putFrame(src);
-			}
-		}).start();
+//	
+//		UsbCamera cam = CameraServer.getInstance().startAutomaticCapture();
+//		cam.setResolution(640, 480);
+//		CvSink cvSink = CameraServer.getInstance().getVideo();
+//		CvSource outputStream = CameraServer.getInstance().putVideo("Test", 640, 480);
+//		Mat src = new Mat();
+//		new Thread(() -> {
+//			while(!Thread.interrupted()) {
+//				cvSink.grabFrame(src);
+//				outputStream.putFrame(src);
+//			}
+//		}).start();
 	}
 
 	/**
@@ -100,6 +100,7 @@ public class Robot extends TimedRobot {
 		 * ExampleCommand(); break; }
 		 */
 
+		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -120,6 +121,7 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+			
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}

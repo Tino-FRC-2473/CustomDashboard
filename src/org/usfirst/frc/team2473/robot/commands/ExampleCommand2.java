@@ -30,6 +30,7 @@ public class ExampleCommand2 extends Command {
 	@Override
 	protected void execute() {
 		SmartDashboard.clearFlags("", 0);
+		
 		SmartDashboard.updateValues();
 	}
 

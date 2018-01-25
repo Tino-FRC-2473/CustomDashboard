@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team2473.robot.subsystems;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -15,6 +16,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class ExampleSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	
+	PowerDistributionPanel pdp = new PowerDistributionPanel();
+	
 	public ExampleSubsystem() {
 		
 	}
@@ -22,6 +26,18 @@ public class ExampleSubsystem extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	
+	public double getCurrent(int channel) {
+		return pdp.getCurrent(channel);
+	}
+	
+	public double getVoltage() {
+		return pdp.getVoltage();
+	}
+	
+	public double getTotalCurrent(){
+		return pdp.getTotalCurrent();
 	}
 	
 	public double returnSensorOutput() {

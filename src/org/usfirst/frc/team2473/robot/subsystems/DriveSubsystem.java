@@ -28,7 +28,6 @@ public class DriveSubsystem extends Subsystem {
 	SpeedControllerGroup rightTalons = new SpeedControllerGroup(rightTalon1, rightTalon2);
 	public DifferentialDrive drive = new DifferentialDrive(leftTalons, rightTalons);
 	
-	
 	public DriveSubsystem() {
 		
 	}

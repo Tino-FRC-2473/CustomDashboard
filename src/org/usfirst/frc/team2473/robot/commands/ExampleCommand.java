@@ -29,7 +29,11 @@ public class ExampleCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("Sensor Value", Robot.exampleSubsystem.returnSensorOutput());
+		for(int i = 0; i < 16; i++){
+			SmartDashboard.putNumber("Channel " + i, Robot.exampleSubsystem.getCurrent(i));
+		}
+		SmartDashboard.putNumber("Voltage", Robot.exampleSubsystem.getVoltage());
+		SmartDashboard.putNumber("Total Current", Robot.exampleSubsystem.getTotalCurrent());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
